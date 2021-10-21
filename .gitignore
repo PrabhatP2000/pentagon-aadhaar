@@ -1,0 +1,7 @@
+*.log
+*.pot
+*.pyc
+__pycache__
+.idea/
+main/__pycache__/
+webdev/__pycache__/
