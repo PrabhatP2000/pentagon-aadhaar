@@ -3,5 +3,5 @@
 *.pyc
 __pycache__
 .idea/
-main/__pycache__/
-webdev/__pycache__/
+ps1/__pycache__/
+aadhaar/__pycache__/
