@@ -16,6 +16,7 @@
     <!-- CSS Block -->
 
     {% block css %}
+    
     {% endblock%}
 
     <!-- JS Block -->
@@ -26,6 +27,45 @@
 
 <body>
     <!-- Header -->
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="50" height="42">
+                  </a>
+              <a class="p-1 navbar-brand mb-1 h1" href="#"><h4>My Aadhaar</h4></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-0 mb-lg-0">
+                  <li class="p-1 nav-item">
+                    <a class="nav-link active" aria-current="page" href="#" style="color: aliceblue;"><h4>About UIDIA</h4></a>
+                  </li>
+                  <li class="p-1 nav-item">
+                    <a class="nav-link" href="#" style="color: aliceblue;"><h4>Contact us</h4></a>
+                  </li>
+                  <li class="p-1 nav-item dropdown">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: aliceblue;">
+                    <h4> Media & Resources</h4>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#" style="color: black;">Action</a></li>
+                      <li><a class="dropdown-item" href="#" >Another action</a></li>
+                      <li><hr class="dropdown-divider" ></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+              
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search here" aria-label="Search">
+                  <button class="btn btn-outline-light" type="submit"><h4>Search</h4></button>
+                </form>
+              </div>
+            </div>
+          </nav>
+    </header>
     {% block content %}
 
 
