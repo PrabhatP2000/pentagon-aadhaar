@@ -28,10 +28,10 @@
 <body>
   <!-- Header -->
   <header>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="53" height="45">
+          <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="60" height="50">
         </a>
         <a class="p-1 navbar-brand mb-1 h1" href="#">
           <h4>My Aadhaar</h4>
@@ -47,11 +47,7 @@
                 <h4 style="color: white;">About UIDAI</h4>
               </a>
             </li>
-            <li class="p-1 ml-2 nav-item">
-              <a class="nav-link" href="#" style="color: aliceblue;">
-                <h4 style="color: white;">Contact us</h4>
-              </a>
-            </li>
+            
             <li class="p-1 ml-2 nav-item dropdown">
               <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false" style="color: aliceblue;">
@@ -65,6 +61,11 @@
                 </li>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
+            </li>
+            <li class="p-1 ml-2 nav-item">
+              <a class="nav-link" href="#" style="color: aliceblue;">
+                <h4 style="color: white;">Contact us</h4>
+              </a>
             </li>
 
           </ul>
@@ -84,7 +85,7 @@
   {% endblock %}
 
   <!-- Footer -->
-  <div class="container-fluid my-5 mx-0">
+  <div class="container-fluid my-5 mx-0" style="background-color: #0d6efd;">
 
     <footer class="text-white text-center text-lg-start" style="background-color: #0d6efd;">
       
