@@ -8,8 +8,8 @@
 {% endblock%}
 {% block content %}
 <h1 style="margin-top:5%;">
-    Aadhaar address Update Project
-    <pre>
+  Aadhaar address Update Project
+  <pre>
        Sample
        Sample
        Sample
@@ -42,5 +42,172 @@
         </h1>
     </pre>
 </h1>
+<div class="container">
+  <div class="row">
+    <div class="d-grid gap-2 col-md-4 col-lg-4 col-sm-6 col-12 text-center mb-4">
+      <button type="button" class="btn btn-primary centered btn-lg" data-bs-toggle="modal" data-bs-target="#demo1">
+        How to Update Address?
+      </button>
+    </div>
+    <div class="d-grid gap-2 col-md-4 col-lg-4 col-sm-6 col-12 text-center mb-4">
+      <button type="button" class="btn btn-primary centered btn-lg" data-bs-toggle="modal" data-bs-target="#loginModel">
+        Update Address
+      </button>
+    </div>
+    <div class="d-grid gap-2 col-md-4 col-lg-4 col-sm-12 col-12 text-center mb-4">
+      <button type="button" class="btn btn-primary centered btn-lg" data-bs-toggle="modal" data-bs-target="#loginModel">
+        Check Status
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<div class="modal fade" id="loginModel" tabindex="-1" role="dialog" data-bs-backdrop="static"
+  aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="navbar-brand" href="#">
+          <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="55" height="55">
+        </a>
+        <h3 class="text-center mx-1">Address Updation</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </button>
+      </div>
+      <div class="modal-body px-5 pt-2 pb-1 p-md-5">
+
+
+        <form action="" method="post" class="signup-form">
+
+          <div class="form-group mb-4">
+            <input type="number" class="form-control" style="padding: 2%;" name="aadharnumber" required
+              placeholder="Enter Aadhaar Number">
+          </div>
+          <div class="form-group mb-4">
+            <input type="number" name="otp" style="padding: 2%;" required class="form-control" placeholder="Enter OTP">
+          </div>
+          <hr style="opacity:0.1 ">
+          <div class="form-group mb-3">
+            <button type="submit" class="form-control btn btn-primary btn-lg rounded submit px-3">Submit</button>
+          </div>
+
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--How to Update address Modals-->
+<!--Demo1 Model-->
+<div class="modal fade" id="demo1" tabindex="-1" role="dialog" data-bs-backdrop="static"
+  aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="navbar-brand" href="#">
+          <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="55" height="55">
+        </a>
+        <h3 class="text-center mx-1">Demo : Address Updation</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </button>
+      </div>
+      <div class="modal-body px-5 pt-2 pb-1 p-md-5">
+
+       <p>Fill the follwing details : </p>
+        <form action="" method="post" class="signup-form">
+           
+          <div class="form-group mb-4">
+            <input type="number" class="form-control" style="padding: 2%;" name="aadharnumber" required
+              placeholder="XXXX XXXX 4332" disabled>
+          </div>
+          <div class="form-group mb-4">
+            <input type="number" name="otp" style="padding: 2%;" required class="form-control" placeholder="Enter OTP" disabled>
+          </div>
+          <hr style="opacity:0.1 ">
+          <div class="form-group mb-3">
+            <button type="submit" class="form-control btn btn-primary btn-lg rounded submit px-3" disabled>Submit</button>
+          </div>
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-bs-target="#demo2" data-bs-toggle="modal" data-bs-dismiss="modal">Next</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!--Demo1 Model End-->
+
+<!--Demo2 Model-->
+<div class="modal fade" id="demo2" tabindex="-1" role="dialog" data-bs-backdrop="static"
+  aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="navbar-brand" href="#">
+          <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="55" height="55">
+        </a>
+        <h3 class="text-center mx-1">Demo : Address Updation</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </button>
+      </div>
+      <div class="modal-body px-5 pt-2 pb-1 p-md-5">
+
+       <p>Enter the landlord's Aadhar or Mobile no. : </p>
+        <form action="" method="post" class="signup-form">
+           
+          <div class="form-group mb-4">
+            <input type="number" class="form-control" style="padding: 2%;" name="aadharnumber" required
+              placeholder="Enter Aadhaar / Mobileno" disabled>
+          </div>
+        
+          <hr style="opacity:0.1 ">
+          <div class="form-group mb-3">
+            <button type="submit" class="form-control btn btn-primary btn-lg rounded submit px-3" disabled>Submit</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-bs-target="#demo1" data-bs-toggle="modal" data-bs-dismiss="modal">Go Back</button>
+          
+            <button type="button" class="btn btn-warning" data-bs-target="#demo3" data-bs-toggle="modal" data-bs-dismiss="modal">Next</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!--Demo2 Model End-->
+
+<!--Demo3 Model -->
+
+<div class="modal fade" id="demo3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="navbar-brand" href="#">
+          <img src="{%static 'icons/congrats.png'%}" alt="" width="55" height="55">
+        </a>
+        <h4 class="modal-title" id="exampleModalLabel">Congratulations</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><h4>Your request has been successfully sent to the landlord.</h4></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Demo3 Model End-->
+<!--How to Update address Modals Closed-->
+
 
 {% endblock %}
