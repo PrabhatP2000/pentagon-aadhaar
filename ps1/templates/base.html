@@ -41,40 +41,28 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-0 mb-lg-0">
+          <ul class="navbar-nav me-auto mb-0 mb-lg-0 nav-fill w-100">
             <li class="p-1 ml-2 nav-item">
-              <a class="nav-link active" aria-current="page" href="#" style="color: aliceblue;">
-                <h4 style="color: white;">About UIDAI</h4>
+              <a class="nav-link active" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#demo1" style="color: aliceblue;">
+                <h4 style="color: white;"> How to Update Address?</h4>
               </a>
             </li>
-            
+
             <li class="p-1 ml-2 nav-item dropdown">
-              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              <a class="nav-link" href="#index.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false" style="color: aliceblue;">
-                <h4 style="color: white;"> Media & Resources</h4>
+                <h4 style="color: white;">Update Address</h4>
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#" style="color: black;">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
+             
             </li>
             <li class="p-1 ml-2 nav-item">
               <a class="nav-link" href="#" style="color: aliceblue;">
-                <h4 style="color: white;">Contact us</h4>
+                <h4 style="color: white;">Check Status</h4>
               </a>
             </li>
 
           </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search here" aria-label="Search">
-            <button class="btn btn-outline-light" type="submit">
-              <h4>Search</h4>
-            </button>
-          </form>
+          
         </div>
       </div>
     </nav>
@@ -83,7 +71,122 @@
 
 
   {% endblock %}
+<!--Body-->
 
+  <div class="modal fade" id="demo1" tabindex="-1" role="dialog" data-bs-backdrop="static"
+  aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="navbar-brand" href="#">
+          <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="55" height="55">
+        </a>
+        <h3 class="text-center mx-1">Demo : Address Updation</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </button>
+      </div>
+      <div class="modal-body px-5 pt-2 pb-1 p-md-5">
+
+        <p>Fill the follwing details : </p>
+        <form action="" method="post" class="signup-form">
+
+          <div class="form-group mb-4">
+            <input type="number" class="form-control" style="padding: 2%;" name="aadharnumber" required
+              placeholder="XXXX XXXX 4332" disabled>
+          </div>
+          <div class="form-group mb-4">
+            <input type="number" name="otp" style="padding: 2%;" required class="form-control" placeholder="Enter OTP"
+              disabled>
+          </div>
+          <hr style="opacity:0.1 ">
+          <div class="form-group mb-3">
+            <button type="submit" class="form-control btn btn-primary btn-lg rounded submit px-3"
+              disabled>Submit</button>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-bs-target="#demo2" data-bs-toggle="modal"
+              data-bs-dismiss="modal">Next</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!--Demo1 Model End-->
+
+<!--Demo2 Model-->
+<div class="modal fade" id="demo2" tabindex="-1" role="dialog" data-bs-backdrop="static"
+  aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="navbar-brand" href="#">
+          <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="55" height="55">
+        </a>
+        <h3 class="text-center mx-1">Demo : Address Updation</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </button>
+      </div>
+      <div class="modal-body px-5 pt-2 pb-1 p-md-5">
+
+        <p>Enter the landlord's Aadhar or Mobile no. : </p>
+        <form action="" method="post" class="signup-form">
+
+          <div class="form-group mb-4">
+            <input type="number" class="form-control" style="padding: 2%;" name="aadharnumber" required
+              placeholder="Enter Aadhaar / Mobileno" disabled>
+          </div>
+
+          <hr style="opacity:0.1 ">
+          <div class="form-group mb-3">
+            <button type="submit" class="form-control btn btn-primary btn-lg rounded submit px-3"
+              disabled>Submit</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-bs-target="#demo1" data-bs-toggle="modal"
+              data-bs-dismiss="modal">Go Back</button>
+
+            <button type="button" class="btn btn-warning" data-bs-target="#demo3" data-bs-toggle="modal"
+              data-bs-dismiss="modal">Next</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!--Demo2 Model End-->
+
+<!--Demo3 Model -->
+
+<div class="modal fade" id="demo3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="navbar-brand" href="#">
+          <img src="{%static 'icons/congrats.png'%}" alt="" width="55" height="55">
+        </a>
+        <h4 class="modal-title" id="exampleModalLabel">Congratulations</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          <h4>Your request has been successfully sent to the landlord.</h4>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Body-->
   <!-- Footer -->
   <div class="container-fluid mt-5 mx-0 mb-0" style="background-color: #0d6efd;">
 
@@ -112,7 +215,6 @@
               </div>
               <div class="module-content">
 
-
                 <div class="custom">
                   <ul class="list-unstyled mt-1">
                     <li class="d-inline mr-5 p-1" ><a href="https://www.facebook.com/AadhaarOfficial/"
@@ -125,7 +227,7 @@
                         target="_blank" rel="noopener noreferrer"><img  src="{%static 'icons/youtube.png'%}"
                           alt="Youtube" class="mb-5" width="30" height="30"></a></li>
 
-                    <li class="d-inline mr-5 p-1" ><a
+                    <li class="d-inline mr-5 p-1"><a
                         href="https://www.linkedin.com/company/unique-identification-authority-of-india-uidai-"
                         target="_blank" rel="noopener noreferrer"><img  src="{%static 'icons/linkedin.png'%}"
                           alt="LinkedIn" class="mb-5" width="30" height="30"></a></li>
@@ -135,18 +237,21 @@
 
             </div>
           </div>
-      
+
           <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-           
-              <h4 class="text-uppercase mb-4">Contact Us</h4>
-  
-              <p >
-               <h5 style="color: rgb(224, 241, 255);">Toll Free : 1947</h5> </p>
-  
-              <p ><h5  style="color:rgb(224, 241, 255);">help@uidai.gov.in</h5></p>
-              
+
+            <h4 class="text-uppercase mb-4">Contact Us</h4>
+
+            <p>
+              <h5 style="color: rgb(224, 241, 255);">Toll Free : 1947</h5>
+            </p>
+
+            <p>
+              <h5 style="color:rgb(224, 241, 255);">help@uidai.gov.in</h5>
+            </p>
+
           </div>
-         
+
           <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
             <h4 class="text-uppercase mb-4">Government of India</h4>
 
@@ -190,9 +295,9 @@
               </tbody>
             </table>
           </div>
-          
+
         </div>
-        
+
       </div>
      
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
@@ -200,9 +305,7 @@
         <a class="text-white" href="#">
         Team Pentagon</a>
       </div>
-    
     </footer>
-
   </div>
   <!-- End of Footer -->
 
