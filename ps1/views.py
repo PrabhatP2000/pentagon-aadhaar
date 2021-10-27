@@ -5,6 +5,20 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'index.html')
 
+def landlordform(request):
+    return render(request, 'landlordform.html')    
+
+def status_of_requests(request):
+    return render(request, 'status_of_requests.html')   
+
+def residentlogin(request):
+    return render(request, 'residentlogin.html')  
+
+def landlordlogin(request):
+    return render(request, 'landlordlogin.html')  
+
+def resident_address(request):
+    return render(request, 'resident_address.html')
 # Function to accept the Landlord's credentials from the user
 def getLandlordCredentials(request):
         if request.method == 'POST':
