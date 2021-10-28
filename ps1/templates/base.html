@@ -17,6 +17,13 @@
 
   {% block css %}
   <link rel="stylesheet" type="text/stylesheet" href="{%static 'css/footer.css'%}" />
+  <style>
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  </style>
   {% endblock%}
 
   <!-- JS Block -->
@@ -33,7 +40,7 @@
         <a class="navbar-brand" href="#">
           <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="60" height="50">
         </a>
-        <a class="p-1 navbar-brand mb-1 h1" href="#">
+        <a class="p-1 navbar-brand mb-1 h1" href="/">
           <h4>My Aadhaar</h4>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -41,28 +48,30 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-0 mb-lg-0 nav-fill w-100">
-            <li class="p-1 ml-2 nav-item">
-              <a class="nav-link active" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#demo1" style="color: aliceblue;">
+          <ul class="navbar-nav me-auto mb-0 mb-lg-0">
+            <li class="p-1 pl-2 nav-item dropdown">
+              <a class="nav-link" href="https://uidai.gov.in/about-uidai/unique-identification-authority-of-india/about.html" id="navbarDropdown" target="_blank" role="button"
+                aria-expanded="false" style="color: aliceblue;">
+                <h4 style="color: white;">About UIDAI</h4>
+              </a>
+
+            </li>
+            <li class="p-1 pl-2 nav-item">
+              <a class="nav-link active" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#demo1"
+                style="color: aliceblue;">
                 <h4 style="color: white;"> How to Update Address?</h4>
               </a>
             </li>
 
-            <li class="p-1 ml-2 nav-item dropdown">
-              <a class="nav-link" href="#index.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false" style="color: aliceblue;">
-                <h4 style="color: white;">Update Address</h4>
-              </a>
-             
-            </li>
-            <li class="p-1 ml-2 nav-item">
-              <a class="nav-link" href="#" style="color: aliceblue;">
+
+            <li class="p-1 pl-2 nav-item">
+              <a class="nav-link" href="/landlordlogin" style="color: aliceblue;">
                 <h4 style="color: white;">Check Status</h4>
               </a>
             </li>
 
           </ul>
-          
+
         </div>
       </div>
     </nav>
@@ -71,131 +80,134 @@
 
 
   {% endblock %}
-<!--Body-->
+  <!--Body-->
+
+
+  <!--Demo 1-->
 
   <div class="modal fade" id="demo1" tabindex="-1" role="dialog" data-bs-backdrop="static"
-  aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
-  <div class="modal-dialog  modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <a class="navbar-brand" href="#">
-          <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="55" height="55">
-        </a>
-        <h3 class="text-center mx-1">Demo : Address Updation</h3>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </button>
-      </div>
-      <div class="modal-body px-5 pt-2 pb-1 p-md-5">
+    aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <a class="navbar-brand" href="#">
+            <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="55" height="55">
+          </a>
+          <h3 class="text-center mx-1">Demo : Address Updation</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </button>
+        </div>
+        <div class="modal-body px-5 pt-2 pb-1 p-md-5">
 
-        <p>Fill the follwing details : </p>
-        <form action="" method="post" class="signup-form">
+          <p>Fill the follwing details : </p>
+          <form action="" method="post" class="signup-form">
 
-          <div class="form-group mb-4">
-            <input type="number" class="form-control" style="padding: 2%;" name="aadharnumber" required
-              placeholder="XXXX XXXX 4332" disabled>
-          </div>
-          <div class="form-group mb-4">
-            <input type="number" name="otp" style="padding: 2%;" required class="form-control" placeholder="Enter OTP"
-              disabled>
-          </div>
-          <hr style="opacity:0.1 ">
-          <div class="form-group mb-3">
-            <button type="submit" class="form-control btn btn-primary btn-lg rounded submit px-3"
-              disabled>Submit</button>
-          </div>
+            <div class="form-group mb-4">
+              <input type="number" class="form-control" style="padding: 2%;" name="aadharnumber" required
+                placeholder="XXXX XXXX 4332" disabled>
+            </div>
+            <div class="form-group mb-4">
+              <input type="number" name="otp" style="padding: 2%;" required class="form-control" placeholder="Enter OTP"
+                disabled>
+            </div>
+            <hr style="opacity:0.1 ">
+            <div class="form-group mb-3">
+              <button type="submit" class="form-control btn btn-primary btn-lg rounded submit px-3"
+                disabled>Submit</button>
+            </div>
 
-          <div class="modal-footer">
-            <button type="button" class="btn btn-warning" data-bs-target="#demo2" data-bs-toggle="modal"
-              data-bs-dismiss="modal">Next</button>
-          </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-bs-target="#demo2" data-bs-toggle="modal"
+                data-bs-dismiss="modal">Next</button>
+            </div>
 
-        </form>
+          </form>
 
-      </div>
-    </div>
-  </div>
-</div>
-<!--Demo1 Model End-->
-
-<!--Demo2 Model-->
-<div class="modal fade" id="demo2" tabindex="-1" role="dialog" data-bs-backdrop="static"
-  aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
-  <div class="modal-dialog  modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <a class="navbar-brand" href="#">
-          <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="55" height="55">
-        </a>
-        <h3 class="text-center mx-1">Demo : Address Updation</h3>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </button>
-      </div>
-      <div class="modal-body px-5 pt-2 pb-1 p-md-5">
-
-        <p>Enter the landlord's Aadhar or Mobile no. : </p>
-        <form action="" method="post" class="signup-form">
-
-          <div class="form-group mb-4">
-            <input type="number" class="form-control" style="padding: 2%;" name="aadharnumber" required
-              placeholder="Enter Aadhaar / Mobileno" disabled>
-          </div>
-
-          <hr style="opacity:0.1 ">
-          <div class="form-group mb-3">
-            <button type="submit" class="form-control btn btn-primary btn-lg rounded submit px-3"
-              disabled>Submit</button>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-warning" data-bs-target="#demo1" data-bs-toggle="modal"
-              data-bs-dismiss="modal">Go Back</button>
-
-            <button type="button" class="btn btn-warning" data-bs-target="#demo3" data-bs-toggle="modal"
-              data-bs-dismiss="modal">Next</button>
-          </div>
-
-        </form>
-
+        </div>
       </div>
     </div>
   </div>
-</div>
-<!--Demo2 Model End-->
+  <!--Demo1 Model End-->
 
-<!--Demo3 Model -->
+  <!--Demo2 Model-->
+  <div class="modal fade" id="demo2" tabindex="-1" role="dialog" data-bs-backdrop="static"
+    aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <a class="navbar-brand" href="#">
+            <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="55" height="55">
+          </a>
+          <h3 class="text-center mx-1">Demo : Address Updation</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </button>
+        </div>
+        <div class="modal-body px-5 pt-2 pb-1 p-md-5">
 
-<div class="modal fade" id="demo3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-  data-bs-backdrop="static">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <a class="navbar-brand" href="#">
-          <img src="{%static 'icons/congrats.png'%}" alt="" width="55" height="55">
-        </a>
-        <h4 class="modal-title" id="exampleModalLabel">Congratulations</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>
-          <h4>Your request has been successfully sent to the landlord.</h4>
-        </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Done</button>
+          <p>Enter the landlord's Aadhar or Mobile no. : </p>
+          <form action="" method="post" class="signup-form">
+
+            <div class="form-group mb-4">
+              <input type="number" class="form-control" style="padding: 2%;" name="aadharnumber" required
+                placeholder="Enter Aadhaar / Mobileno" disabled>
+            </div>
+
+            <hr style="opacity:0.1 ">
+            <div class="form-group mb-3">
+              <button type="submit" class="form-control btn btn-primary btn-lg rounded submit px-3"
+                disabled>Submit</button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-bs-target="#demo1" data-bs-toggle="modal"
+                data-bs-dismiss="modal">Go Back</button>
+
+              <button type="button" class="btn btn-warning" data-bs-target="#demo3" data-bs-toggle="modal"
+                data-bs-dismiss="modal">Next</button>
+            </div>
+
+          </form>
+
+        </div>
       </div>
     </div>
   </div>
-</div>
+  <!--Demo2 Model End-->
 
-<!--Body-->
+  <!--Demo3 Model -->
+
+  <div class="modal fade" id="demo3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <a class="navbar-brand" href="#">
+            <img src="{%static 'icons/congrats.png'%}" alt="" width="55" height="55">
+          </a>
+          <h4 class="modal-title" id="exampleModalLabel">Congratulations</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>
+            <h4>Your request has been successfully sent to the landlord.</h4>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Body-->
   <!-- Footer -->
   <div class="container-fluid mt-5 mx-0 mb-0" style="background-color: #0d6efd;">
 
     <footer class="text-white text-center text-lg-start" style="background-color: #0d6efd;">
-      
+
       <div class="container px-4 pt-4 mt-4">
-      
+
         <div class="row mt-8 mb-0">
-     
+
           <div class="col-lg-4 col-md-12 mb-md-0">
             <h4 class="text-uppercase mb-4">UIDAI Head Office</h4>
 
@@ -217,19 +229,19 @@
 
                 <div class="custom">
                   <ul class="list-unstyled mt-1">
-                    <li class="d-inline mr-5 p-1" ><a href="https://www.facebook.com/AadhaarOfficial/"
-                        target="_blank" rel="noopener noreferrer"> <img src="{%static 'icons/facebook.png'%}"
-                          alt="Facebook" class="mb-5" width="30" height="30"></a></li>
-                    <li class="d-inline mr-5 p-1" ><a href="https://twitter.com/UIDAI" target="_blank"
-                        rel="noopener noreferrer"><img  src="{%static 'icons/twitter.png'%}" alt="Twitter" class="mb-5"
+                    <li class="d-inline mr-5 p-1"><a href="https://www.facebook.com/AadhaarOfficial/" target="_blank"
+                        rel="noopener noreferrer"> <img src="{%static 'icons/facebook.png'%}" alt="Facebook"
+                          class="mb-5" width="30" height="30"></a></li>
+                    <li class="d-inline mr-5 p-1"><a href="https://twitter.com/UIDAI" target="_blank"
+                        rel="noopener noreferrer"><img src="{%static 'icons/twitter.png'%}" alt="Twitter" class="mb-5"
                           width="30" height="30"></a></li>
-                    <li class="d-inline mr-5 p-1" ><a href="https://www.youtube.com/user/AadhaarUID"
-                        target="_blank" rel="noopener noreferrer"><img  src="{%static 'icons/youtube.png'%}"
-                          alt="Youtube" class="mb-5" width="30" height="30"></a></li>
+                    <li class="d-inline mr-5 p-1"><a href="https://www.youtube.com/user/AadhaarUID" target="_blank"
+                        rel="noopener noreferrer"><img src="{%static 'icons/youtube.png'%}" alt="Youtube" class="mb-5"
+                          width="30" height="30"></a></li>
 
                     <li class="d-inline mr-5 p-1"><a
                         href="https://www.linkedin.com/company/unique-identification-authority-of-india-uidai-"
-                        target="_blank" rel="noopener noreferrer"><img  src="{%static 'icons/linkedin.png'%}"
+                        target="_blank" rel="noopener noreferrer"><img src="{%static 'icons/linkedin.png'%}"
                           alt="LinkedIn" class="mb-5" width="30" height="30"></a></li>
                   </ul>
                 </div>
@@ -299,11 +311,11 @@
         </div>
 
       </div>
-     
+
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
         © 2021 Copyright :
         <a class="text-white" href="#">
-        Team Pentagon</a>
+          Team Pentagon</a>
       </div>
     </footer>
   </div>
