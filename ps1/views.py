@@ -5,8 +5,8 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'index.html')
 
-def landlordform(request):
-    return render(request, 'landlordform.html')    
+def landlorddetails(request):
+    return render(request, 'landlorddetails.html')    
 
 def status_of_requests(request):
     return render(request, 'status_of_requests.html')   
