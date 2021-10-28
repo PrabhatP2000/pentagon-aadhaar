@@ -17,7 +17,7 @@
 <!--Form2-->
 <div class="container mt-5">
   <div class="row justify-content-center">
-    <div class="col-lg-5 col-md-7 col-xl-5 col-xll-4 mb-5" style="background-color: rgba(250, 250, 250, 0.24);border: solid #BDBDBD 1px; 
+    <div class="col-lg-6 col-md-7 col-xl-5 col-xll-4 mb-5" style="background-color: rgba(250, 250, 250, 0.24);border: solid #BDBDBD 1px; 
         box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.5);">
       <div style="background-color: rgb(251, 251, 251);">
         <img src="{%static 'icons/landlordprofile2.png'%}" alt="" width="55" height="63"
@@ -32,19 +32,24 @@
 
           <form>
             <div class="mb-3">
-              <label for="aadharnumber2" class="form-label" style="color: rgb(110, 110, 110);">Landlord's Aadhaar
-                Number / Mobile Number</label>
-              <div class="input-group input-group-lg">
-                <input type="number" class="form-control" id="aadharnumber2" placeholder="Enter Aadhaar / Mobile number"
+              <label for="aadharnumber2" class="form-label" style="color: rgb(144, 144, 144);">Landlord's Aadhaar
+                Number</label>
+              <div class="input-group input-group-lg mb-3">
+                <input type="number" class="form-control" id="aadharnumber2" placeholder="Enter Aadhaar Number"
                   aria-label="Sizing example input" aria-describedby="aadharnumberhelp">
               </div>
-              <div id="aadharnumberhelp" class="form-text mt-2">We'll share link on landlord's registered mobile number
+              <label for="mobilenumber2" class="form-label" style="color:rgb(144, 144, 144);">Landlord's Mobile Number</label>
+              <div class="input-group input-group-lg">
+                <input type="number" class="form-control" id="mobilenumber2" placeholder="Enter Mobile Number"
+                  aria-label="Sizing example input" aria-describedby="mobilenumberhelp">
+              </div>
+              <div id="mobilenumberhelp" class="form-text mt-2">We'll share link on landlord's registered mobile number
               </div>
 
             </div>
             <hr style="color: cadetblue;">
             <div class="d-grid gap-2 col-6 mx-auto mt-4  mb-3">
-              <button type="submit" class="btn btn-primary btn-lg" data-bs-target="#demo1">Submit</button>
+              <button type="submit" class="btn btn-primary btn-lg" data-bs-target="#demo3">Submit</button>
             </div>
           </form>
         </div>

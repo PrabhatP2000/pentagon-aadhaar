@@ -5,11 +5,11 @@
 
 {% block css %}
 <style>
-  input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
--webkit-appearance: none; 
-   margin: 0; 
-}
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 </style>
 {% endblock%}
 
@@ -20,10 +20,10 @@ input[type=number]::-webkit-outer-spin-button {
     <div class="row justify-content-center">
       <div class="col-lg-6 col-md-7 col-xl-5 col-xll-4 mb-5" style="background-color: rgba(250, 250, 250, 0.24); border: solid #BDBDBD 1px; 
           box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.5)  ;">
-        <div class="mt-2" style="background-color: rgb(251, 251, 251);">
-          <img src="{%static 'icons/landlordprofile2.png'%}" alt="" width="55" height="65"
+        <div style="background-color: rgb(251, 251, 251);">
+          <img src="{%static 'icons/confirm.png'%}" alt="" width="50" height="58"
             style="padding-bottom: 3%;">
-          <h3 style="display: inline-block; padding: 3%;">Landlord's  Login</h3>
+          <h3 style="display: inline-block; padding: 3%;">Check Status</h3>
   
         </div>
         <hr style="margin:0%">
@@ -33,14 +33,13 @@ input[type=number]::-webkit-outer-spin-button {
   
             <form>
               <div class="mb-3">
-                <label for="aadharnumber3" class="form-label" style="color: rgb(144, 144, 144);">Aadhaar Number / Mobile
-                  Number</label>
+               
+                <label for="resident_mobilenumber_login" class="form-label" style="color:rgb(144, 144, 144);">Mobile Number</label>
                 <div class="input-group input-group-lg">
-                  <input type="number" class="form-control" id="aadharnumber3" placeholder="XXXX XXXX 4536"
-                    aria-describedby="aadharnumber3help">
-                </div>
-  
-                <div id="aadharnumber3help" class="form-text">We'll share OTP on registered mobile number</div>
+                  <input type="number" class="form-control" id="resident_mobilenumber_login" placeholder="Enter Mobile Number"
+                    aria-label="Sizing example input" aria-describedby="mobilenumberhelp">
+                </div>   
+                <div id="mobilenumberhelp" class="form-text">We'll share OTP on your mobile number</div>
   
               </div>
               <div class="mb-4">
@@ -49,12 +48,12 @@ input[type=number]::-webkit-outer-spin-button {
               </div>
               <div class="mb-4">
                 <div class="input-group input-group-lg">
-                  <input type="number" class="form-control" id="otp3" placeholder="Enter OTP">
+                  <input type="number" class="form-control" id="otp1" placeholder="Enter OTP">
                 </div>
               </div>
               <hr style="color: cadetblue;">
-              <div class="d-grid gap-2 col-6 mx-auto mt-3  mb-1">
-                <button type="submit" class="btn btn-primary btn-lg">Login</button>
+              <div class="d-grid gap-2 col-6 mx-auto mt-4  mb-3">
+                <button type="submit" class="btn btn-primary btn-lg">Verify</button>
               </div>
             </form>
           </div>
@@ -64,6 +63,5 @@ input[type=number]::-webkit-outer-spin-button {
   </div>
   
   <!--Form 1 End-->
-  
 
 {% endblock %}
