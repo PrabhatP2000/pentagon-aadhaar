@@ -50,7 +50,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-0 mb-lg-0">
             <li class="p-1 pl-2 nav-item dropdown">
-              <a class="nav-link" href="https://uidai.gov.in/about-uidai/unique-identification-authority-of-india/about.html" id="navbarDropdown" target="_blank" role="button"
+              <a class="nav-link" href="https://uidai.gov.in/" id="navbarDropdown" target="_blank" role="button"
                 aria-expanded="false" style="color: aliceblue;">
                 <h4 style="color: white;">About UIDAI</h4>
               </a>
@@ -65,8 +65,13 @@
 
 
             <li class="p-1 pl-2 nav-item">
-              <a class="nav-link" href="/status_of_requests" style="color: aliceblue;">
+              <a class="nav-link" href="/check_status_login" style="color: aliceblue;">
                 <h4 style="color: white;">Check Status</h4>
+              </a>
+            </li>
+            <li class="p-1 pl-2 nav-item">
+              <a class="nav-link" href="/residentlogin" style="color: aliceblue;">
+                <h4 style="color: white; ">Update Address</h4>
               </a>
             </li>
 
@@ -104,7 +109,11 @@
 
             <div class="form-group mb-4">
               <input type="number" class="form-control" style="padding: 2%;" name="aadharnumber" required
-                placeholder="XXXX XXXX 4332" disabled>
+                placeholder="Enter Aadhaar Number" disabled>
+            </div>
+            <div class="form-group mb-4">
+              <input type="number" class="form-control" style="padding: 2%;" name="aadharnumber" required
+                placeholder="Enter Mobile Number" disabled>
             </div>
             <div class="form-group mb-4">
               <input type="number" name="otp" style="padding: 2%;" required class="form-control" placeholder="Enter OTP"
@@ -138,18 +147,22 @@
           <a class="navbar-brand" href="#">
             <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="55" height="55">
           </a>
-          <h3 class="text-center mx-1">Demo : Address Updation</h3>
+          <h3 class="text-center mx-1">Demo : Landlord's Data</h3>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </button>
         </div>
         <div class="modal-body px-5 pt-2 pb-1 p-md-5">
 
-          <p>Enter the landlord's Aadhar or Mobile no. : </p>
+          <p>Enter the landlord's Data. : </p>
           <form action="" method="post" class="signup-form">
 
             <div class="form-group mb-4">
               <input type="number" class="form-control" style="padding: 2%;" name="aadharnumber" required
-                placeholder="Enter Aadhaar / Mobileno" disabled>
+                placeholder="Enter Aadhaar Number" disabled>
+            </div>
+            <div class="form-group mb-4">
+              <input type="number" class="form-control" style="padding: 2%;" name="mobilenumber" required
+                placeholder="Enter Mobile Number" disabled>
             </div>
 
             <hr style="opacity:0.1 ">
