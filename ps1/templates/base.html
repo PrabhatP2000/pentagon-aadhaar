@@ -41,7 +41,7 @@
           <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="60" height="50">
         </a>
         <a class="p-1 navbar-brand mb-1 h1" href="/">
-          <h4>My Aadhaar</h4>
+          <h4>Home</h4>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -104,7 +104,7 @@
         </div>
         <div class="modal-body px-5 pt-2 pb-1 p-md-5">
 
-          <p>Fill the follwing details : </p>
+          <p style="font-weight:500;">Fill the follwing details : </p>
           <form action="" method="post" class="signup-form">
 
             <div class="form-group mb-4">
@@ -145,7 +145,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <a class="navbar-brand" href="#">
-            <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="55" height="55">
+            <img src="{%static 'icons/landlordprofile2.png'%}" alt="" width="55" height="55">
           </a>
           <h3 class="text-center mx-1">Demo : Landlord's Data</h3>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -153,7 +153,7 @@
         </div>
         <div class="modal-body px-5 pt-2 pb-1 p-md-5">
 
-          <p>Enter the landlord's Data. : </p>
+          <p style="font-weight: 500;">Enter the landlord's Data. : </p>
           <form action="" method="post" class="signup-form">
 
             <div class="form-group mb-4">
@@ -186,9 +186,54 @@
   </div>
   <!--Demo2 Model End-->
 
-  <!--Demo3 Model -->
+  <!--Demo3 Model-->
 
-  <div class="modal fade" id="demo3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  <div class="modal fade" id="demo3" tabindex="-1" role="dialog" data-bs-backdrop="static"
+  aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="navbar-brand" href="#">
+          <img src="{%static 'images/passcodeicon.png'%}" alt="" width="55" height="55">
+        </a>
+        <h3 class="text-center mx-1">Demo : Passcode</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </button>
+      </div>
+      <div class="modal-body px-5 pt-2 pb-1 p-md-5">
+
+        <p>Enter the Passcode ( Already shared via <b>SMS</b> ) : </p>
+        <form action="" method="post" class="signup-form">
+
+          <div class="form-group mb-4">
+            <input type="password" class="form-control" style="padding: 2%;" name="aadharnumber" required
+              placeholder="***********" disabled>
+          </div>
+         
+          <hr style="opacity:0.1 ">
+          <div class="form-group mb-3">
+            <button type="submit" class="form-control btn btn-primary btn-lg rounded submit px-3"
+              disabled>Submit</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-bs-target="#demo2" data-bs-toggle="modal"
+              data-bs-dismiss="modal">Go Back</button>
+
+            <button type="button" class="btn btn-warning" data-bs-target="#demo4" data-bs-toggle="modal"
+              data-bs-dismiss="modal">Next</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!--Demo4 Model End-->
+  <!--Demo4 Model -->
+
+  <div class="modal fade" id="demo4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
     data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -211,6 +256,7 @@
     </div>
   </div>
 
+<!--Demo4 Model End-->
   <!--Body-->
   <!-- Footer -->
   <div class="container-fluid mt-5 mx-0 mb-0" style="background-color: #0d6efd;">
