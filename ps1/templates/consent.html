@@ -51,8 +51,8 @@
                 </form>
                 <form action="{% url 'requestRejected'%}" method="post">
                   {% csrf_token %}
-                  <input type="hidden" name="resident_aadhaar" value="{{da}"}>
-                  <input type="hidden" name="llMobile" value="{{llmobile}"}>
+                  <input type="hidden" name="resident_aadhaar" value="{{da}}"}>
+                  <input type="hidden" name="llMobile" value="{{llmobile}}"}>
                   <input type="submit" class="btn btn-danger" value="Reject">
                 </form>
                 <!-- <button type="button" class="btn btn-success">Accept</button>
