@@ -37,7 +37,7 @@ def handleLandlordCredentials(request):
         # landlord_aadhaar_no = request.POST.get('llAadhaar')
         llMobile = request.POST.get('llMobile')
         if(llMobile==resident_mobile_no):
-            return HttpResponse("Please Enter Landlord's Mobile No. here")
+            return render(request, 'unsuccess.html',{'data':"The Resident Mobile Number can't be same as Landlord's Mobile Number"})
         else:
             landlord = Landlord(llMobile=llMobile)
             landlord.save()
@@ -60,7 +60,7 @@ def handleLandlordLogin(request):
         llAadhaar = request.POST['llAadhaar']
         isPresent=Landlord.objects.filter(llMobile=llMobile).first()
         if(isPresent is None):
-            return HttpResponse("No One has requested to borrow your address")
+            return render(request, 'unsuccess.html',{'data':"No One has requested to borrow your address"})
         else:
             residents=Resident.objects.filter(llMobile=llMobile)
             return render(request, 'consent.html',{'data':residents,'llMobile': llMobile, 'llAadhaar': llAadhaar})
@@ -148,7 +148,7 @@ def updateAddress(request):
         else:
             r.request_flag=False
             r.save()
-            return HttpResponse('Invalid Address, Request Rejected')
+            return render(request, 'unsuccess.html',{'data':"Invalid Address, Request Rejected"})
     elif request.POST.get('submitCode', None):
         resAadhaar = request.POST.get('resident_aadhaar')
         shareCode = request.POST.get('shareCode')
