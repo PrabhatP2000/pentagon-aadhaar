@@ -29,7 +29,7 @@ def handleResident(request):
         resident_mobile_no = request.POST.get('resMobile')
         return render(request, 'landlord.html')
     else:
-        return HttpResponse('Error 404')
+        return render(request, '404.html')
 
 
 def handleLandlordCredentials(request):
@@ -46,9 +46,9 @@ def handleLandlordCredentials(request):
             resident.save()
             msg=f"Your Resident with Aadhaar no. {resident.resident_aadhaar} has requested to Borrow your address.Click the below link to give the Consent or you can visit our site xyz.com.  Link https://localhost:8000/landlord"
             # smsapi.sendSms(msg,landlord.llMobile)
-        return HttpResponse('Success-Your Request has been Successfully Sent')
+        return render(request, 'success.html',{'data':'Success-Your Request has been Successfully Sent'})
     else:
-        return HttpResponse('Error 404')
+        return render(request, '404.html')
 
 def getLandlord(request):
     return render(request, 'landlord_login.html')
@@ -65,7 +65,7 @@ def handleLandlordLogin(request):
             residents=Resident.objects.filter(llMobile=llMobile)
             return render(request, 'consent.html',{'data':residents,'llMobile': llMobile, 'llAadhaar': llAadhaar})
     else:
-        return HttpResponse('Error 404')
+        return render(request, '404.html')
 
 def rejectedRequest(request):
     if request.method == 'POST':
@@ -76,9 +76,9 @@ def rejectedRequest(request):
         if(residents.consent_status is None):
             residents.consent_status=False
             residents.save()
-            return HttpResponse("Your Consent of Flase has been registered")
+            return render(request, 'success.html',{'data':"Your Consent of Flase has been registered"})
     else:
-        return HttpResponse("Error 404")
+        return render(request, '404.html')
 
 def acceptedRequest(request):
     # Offline EKYC LOGIC HERE
@@ -94,10 +94,9 @@ def acceptedRequest(request):
         }
         return render(request, 'ekyc.html', context)
     else:
-        return HttpResponse("Error 404")
+        return render(request, '404.html')
 
 def ekycSuccess(request):
-
     if request.method == 'POST':
         resident_aadhaar_no = request.POST['resAadhaar']
         share_code=request.POST['shareCode']
@@ -106,9 +105,9 @@ def ekycSuccess(request):
         residents.save()
         msg=f"Your Landlord has successfully granted his consent for using his adress.Click the below link to Update your address or you can visit our site xyz.com.  Link https://localhost:8000/status"
         # smsapi.sendSms(msg,residents.resMobile)
-        return HttpResponse('Success')
+        return render(request, 'success.html',{'data':"Offline eKYC Successful"})
     else:
-        return HttpResponse('Error 404')
+        return render(request, '404.html')
 
 def status(request):
     return render(request, 'status_site.html')
@@ -120,7 +119,7 @@ def handleStatus(request):
         print(residents.consent_status)
         return render(request, 'status_check.html',{'resident':residents})
     else:
-        return HttpResponse("Error 404")
+        return render(request, '404.html')
 
 def updateAddress(request):
     print(request.POST)
@@ -145,7 +144,7 @@ def updateAddress(request):
         if validateLocation(r.country, r.state, lat, long):
             r.request_flag=True
             r.save()
-            return HttpResponse('Success')
+            return render(request, 'success.html',{'data':"Congratulations,Your Address has been updated successfully"})
         else:
             r.request_flag=False
             r.save()
@@ -181,7 +180,7 @@ def updateAddress(request):
         }
         return render(request, 'updateResidentAddress.html', context)
     else:
-        return HttpResponse('error 404')
+        return render(request, '404.html')
 
 
 
