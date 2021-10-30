@@ -1,15 +1,20 @@
+from django.contrib import admin
 from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('landlorddetails',views.landlorddetails,name='landlorddetails'),
-    path('status_of_requests',views.status_of_requests,name='status_of_requests'),
-    path('residentlogin',views.residentlogin,name='residentlogin'),
-    path('landlordlogin',views.landlordlogin,name='landlordlogin'),
-    path('resident_address',views.resident_address,name='resident_address'),
-    path('enterpasscode',views.enterpasscode,name='enterpasscode'),
-    path('request_status',views.request_status,name='request_status'),
-    path('check_status_login',views.check_status_login,name='check_status_login'),
-
+    path('', views.index),
+    path('resident/', views.getResident,name='resident'),
+    path('handle_resident', views.handleResident, name="handleResident"),
+    path('handle_landlord',views.handleLandlordCredentials,name='handleLandLord'),
+    path('landlord/',views.getLandlord,name="landlord"),
+    path('handle_landlord_login',views.handleLandlordLogin,name="handleLandLordLogin"),
+    path('request_rejected/',views.rejectedRequest,name="requestRejected"),
+    path('request_accepted/',views.acceptedRequest,name="requestAccepted"),
+    path('ekyc_success/', views.ekycSuccess, name="ekycSuccess"),
+    path('status',views.status,name="st"),
+    path('handle_status',views.handleStatus,name="handleStatus"),
+    path('address_update',views.updateAddress,name="addressUpdate"),
+    path('api/<path:apiLink>', views.getapi),  # for AJAX purpose
+    path('saveZip/', views.saveZip),
 ]

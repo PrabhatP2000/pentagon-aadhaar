@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        /* input[type="number"] {
+      -moz-appearance: textfield;
+    } */
+    </style>
+</head>
+
+<body>
+    <h1>landlord details</h1>
+    <form action="{% url 'ekycSuccess' %}" method="post">
+        {% csrf_token %}
+    <input type="text" name="llAadhaar" id="llAadhaar" placeholder="Enter your aadhar number" minlength=12
+        maxlength=12 value="{{ llAadhaar }}" /><br />
+        <input type="hidden" name="resAadhaar"  value="{{ resAadhaar }}"><br />
+      <input type="text" name="llMobile" id="llMobile" placeholder="Enter Mobile number linked with Aadhaar" minlength=10 maxlength=10  value="{{ llMobile }}"/><br>
+      <input type="text" name="captcha" id="textCaptcha" placeholder="Enter valid captcha" />
+      <img name="imgCaptcha" src="" id="imgcaptcha" /><br />
+      <input type="button" id="reloadCaptcha" name="reloadCaptcha" value="Reload Captcha" />
+      <input type="button" name="sendOTP" id="sendOTP" value="Send OTP" /><br />
+      <input type="hidden" name="OTP" id="textOTP" placeholder="Enter OTP" /><br />
+      <input type="hidden" name="shareCode" id="shareCode" placeholder="Enter Sharable Code" /><br />
+      <input type="hidden" name="validateOTP" id="validateOTP" value="Validate OTP" /><br />
+      <p id="msgLabel"><p><br />
+      <input type="hidden" name="nextPage" id="nextPage" value="Next">
+    </form>
+</body>
+{% load static %}
+<script src="{% static 'ekyc.js' %}">
+</script>
+
+</html>
