@@ -1,7 +1,10 @@
-*.log
 *.pot
 *.pyc
 __pycache__
 .idea/
-main/__pycache__/
-webdev/__pycache__/
+ps1/__pycache__/
+aadhaar/__pycache__/
+ps1/files/__pycache__/
+ps1/ekyc/__pycache__/
+ps1/ekyc/*.zip
+db.sqlite3
