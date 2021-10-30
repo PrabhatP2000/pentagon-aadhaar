@@ -56,6 +56,7 @@ def getLandlord(request):
 def handleLandlordLogin(request):
     if request.method == 'POST':
         llMobile = request.POST['llMobile']
+        print(llMobile)
         llAadhaar = request.POST['llAadhaar']
         isPresent=Landlord.objects.filter(llMobile=llMobile).first()
         if(isPresent is None):
@@ -84,6 +85,7 @@ def acceptedRequest(request):
     if request.method == "POST":
         resident_aadhaar_no = request.POST.get('resident_aadhaar')
         llMobile = request.POST.get('llMobile')
+        print(llMobile, 'shree')
         llAadhaar = request.POST.get('llAadhaar')
         context = {
             'llMobile': llMobile,
@@ -190,10 +192,10 @@ def saveZip(request):
     filedata = body['filedata']
     shareCode = body['code']
     llMobile = body['llMobile']
-    with open(f'main/ekyc/{filename}', "wb") as fh:
+    with open(f'ps1/ekyc/{filename}', "wb") as fh:
         fh.write(base64.decodebytes(bytes(filedata, 'utf-8')))
 
-    archive = zipfile.ZipFile(f'main/ekyc/{filename}', 'r')
+    archive = zipfile.ZipFile(f'ps1/ekyc/{filename}', 'r')
     name = filename.split('.')[0]
     file = archive.open(f'{name}.xml', pwd=bytes(f'{shareCode}', 'utf-8'))
     xmldata = file.read()
