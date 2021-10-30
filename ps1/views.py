@@ -33,20 +33,20 @@ def handleResident(request):
 
 
 def handleLandlordCredentials(request):
-    print(request.POST)
     if request.method == 'POST':
-        landlord_aadhaar_no = request.POST.get('llAadhaar')
+        # landlord_aadhaar_no = request.POST.get('llAadhaar')
         llMobile = request.POST.get('llMobile')
-        if(landlord_aadhaar_no==resident_aadhaar_no):
-            return HttpResponse("Resident Aadhaar and Landlord Aadhaar Cant be Same")
+        if(llMobile==resident_mobile_no):
+            return HttpResponse("Please Enter Landlord's Mobile No. here")
         else:
-            landlord = Landlord(landlord_aadhaar=landlord_aadhaar_no, llMobile=llMobile)
+            landlord = Landlord(llMobile=llMobile)
             landlord.save()
-            resident = Resident(resident_aadhaar=resident_aadhaar_no,landlord_aadhaar=landlord, resMobile=resident_mobile_no)
+            print(resident_mobile_no,type(resident_mobile_no))
+            resident = Resident(resident_aadhaar=resident_aadhaar_no, llMobile=landlord, resMobile=resident_mobile_no)
             resident.save()
             msg=f"Your Resident with Aadhaar no. {resident.resident_aadhaar} has requested to Borrow your address.Click the below link to give the Consent or you can visit our site xyz.com.  Link https://localhost:8000/landlord"
             # smsapi.sendSms(msg,landlord.llMobile)
-            return HttpResponse('Success-Your Request has been Successfully Sent')
+        return HttpResponse('Success-Your Request has been Successfully Sent')
     else:
         return HttpResponse('Error 404')
 
@@ -55,20 +55,21 @@ def getLandlord(request):
 
 def handleLandlordLogin(request):
     if request.method == 'POST':
-        landlord_aadhaar_no = request.POST['llAadhaar']
-        isPresent=Landlord.objects.filter(landlord_aadhaar=landlord_aadhaar_no).first()
+        llMobile = request.POST['llMobile']
+        llAadhaar = request.POST['llAadhaar']
+        isPresent=Landlord.objects.filter(llMobile=llMobile).first()
         if(isPresent is None):
             return HttpResponse("No One has requested to borrow your address")
         else:
-            residents=Resident.objects.filter(landlord_aadhaar=landlord_aadhaar_no)
-            return render(request, 'consent.html',{'data':residents,'landlord':landlord_aadhaar_no})
+            residents=Resident.objects.filter(llMobile=llMobile)
+            return render(request, 'consent.html',{'data':residents,'llMobile': llMobile, 'llAadhaar': llAadhaar})
     else:
         return HttpResponse('Error 404')
 
 def rejectedRequest(request):
     if request.method == 'POST':
         resident_aadhaar_no = request.POST['resident_aadhaar']
-        landlord_aadhaar_no = request.POST['landlord_aadhaar']
+        # landlord_aadhaar_no = request.POST['llMobile']
         #Consent Status Update
         residents=Resident.objects.filter(resident_aadhaar=resident_aadhaar_no).first()
         if(residents.consent_status is None):
@@ -82,11 +83,12 @@ def acceptedRequest(request):
     # Offline EKYC LOGIC HERE
     if request.method == "POST":
         resident_aadhaar_no = request.POST.get('resident_aadhaar')
-        landlord_aadhaar_no = request.POST.get('landlord_aadhaar')
+        llMobile = request.POST.get('llMobile')
+        llAadhaar = request.POST.get('llAadhaar')
         context = {
-            'llAadhaar': landlord_aadhaar_no,
-            'llMobile': '8329253081',
+            'llMobile': llMobile,
             'resAadhaar': resident_aadhaar_no,
+            'llAadhaar': llAadhaar
         }
         return render(request, 'ekyc.html', context)
     else:
@@ -97,14 +99,10 @@ def ekycSuccess(request):
     if request.method == 'POST':
         resident_aadhaar_no = request.POST['resAadhaar']
         share_code=request.POST['shareCode']
-        landlord_aadhaar_no = request.POST['llAadhaar']
         residents=Resident.objects.filter(resident_aadhaar=resident_aadhaar_no).first()
-        landlords=Landlord.objects.filter(landlord_aadhaar=landlord_aadhaar_no).first()
-        landlords.passcode=share_code
         residents.consent_status=True
         residents.save()
-        landlords.save()
-        msg=f"Your Landlord with Aadhaar no. {landlords.landlord_aadhaar} has successfully granted his consent for using his adress.Click the below link to Update your address or you can visit our site xyz.com.  Link https://localhost:8000/status"
+        msg=f"Your Landlord has successfully granted his consent for using his adress.Click the below link to Update your address or you can visit our site xyz.com.  Link https://localhost:8000/status"
         # smsapi.sendSms(msg,residents.resMobile)
         return HttpResponse('Success')
     else:
@@ -154,9 +152,9 @@ def updateAddress(request):
         resAadhaar = request.POST.get('resident_aadhaar')
         shareCode = request.POST.get('shareCode')
         r = Resident.objects.filter(resident_aadhaar=int(resAadhaar)).first()
-        llAadhaar = r.landlord_aadhaar.landlord_aadhaar
-        print(llAadhaar)
-        l = Landlord.objects.filter(landlord_aadhaar=llAadhaar).first()
+        llMobile = r.llMobile.llMobile
+        print(llMobile)
+        l = Landlord.objects.filter(llMobile=llMobile).first()
         print(l.passcode)
         if int(shareCode) == l.passcode:
             flag = True
@@ -191,7 +189,7 @@ def saveZip(request):
     filename = body['filename']
     filedata = body['filedata']
     shareCode = body['code']
-    llAadhaar = body['llAadhaar']
+    llMobile = body['llMobile']
     with open(f'main/ekyc/{filename}', "wb") as fh:
         fh.write(base64.decodebytes(bytes(filedata, 'utf-8')))
 
@@ -216,7 +214,7 @@ def saveZip(request):
     subdist= poa.attrib['subdist']
     vtc= poa.attrib['vtc']
     print(state, street, dist, subdist)
-    x = Landlord.objects.filter(landlord_aadhaar=llAadhaar).first()
+    x = Landlord.objects.filter(llMobile=llMobile).first()
     x.careof = careof
     x.country = country
     x.dist = dist

@@ -13,10 +13,6 @@
 </style>
 {% endblock%}
 
-{% block javascript %}
-<script src="{% static 'landlordScript.js' %}"></script>
-{% endblock%}
-
 
 {% block content %}
 
@@ -38,17 +34,11 @@
         <form action="{% url 'handleLandLord' %}" method="post">
           {% csrf_token %}
           <div class="mb-3">
-            <label for="Landlord's aadhaar number" class="form-label" style="font-weight:500;">Enter the Landlord's
-              Aadhaar No.</label>
-            <div class="input-group input-group-lg mb-3">
-              <input type="text" class="form-control" name="llAadhaar" placeholder="Landlord's Aadhaar" maxlength=12
-                aria-label="Sizing example input" aria-describedby="aadharnumberhelp">
-            </div>
             <label for="mobilenumber2" class="form-label" style="font-weight:500;">Enter the Landlord's Mobile
               No.</label>
             <div class="input-group input-group-lg">
-              <input type="text" name="llMobile" placeholder="Landlord's Mobile No." maxlength=10 class="form-control"
-                aria-label="Sizing example input" aria-describedby="mobilenumberhelp">
+              <input type="text" name="llMobile" placeholder="Landlord's Mobile No." id="inputBox" maxlength=10
+                class="form-control" aria-label="Sizing example input" aria-describedby="mobilenumberhelp">
             </div>
             <div id="mobilenumberhelp" class="form-text mt-2">We'll share link on landlord's registered mobile number
             </div>
@@ -56,7 +46,7 @@
           </div>
           <hr style="color: cadetblue;">
           <div class="d-grid gap-2 col-6 mx-auto mt-4  mb-3">
-            <input type="submit" value="Submit" class="btn btn-primary btn-lg">
+            <input type="button" id="submitLlDetails" value="Submit" class="btn btn-primary btn-lg">
             <!-- <button type="submit" class="btn btn-primary btn-lg" data-bs-target="#demo3">Submit</button> -->
           </div>
         </form>
@@ -88,5 +78,5 @@
   </div>
 </div> -->
 
-
+<script src="{% static 'landlordScript.js' %}"></script>
 {% endblock %}
