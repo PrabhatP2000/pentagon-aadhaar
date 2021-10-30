@@ -158,7 +158,7 @@ def updateAddress(request):
         print(llMobile)
         l = Landlord.objects.filter(llMobile=llMobile).first()
         print(l.passcode)
-        if int(shareCode) == l.passcode:
+        if shareCode and int(shareCode) == l.passcode:
             flag = True
             context = {
                 'auth': flag,
@@ -169,7 +169,8 @@ def updateAddress(request):
             flag = False
             context = {
                 "auth": flag,
-                'resAadhaar':resAadhaar
+                'resAadhaar':resAadhaar,
+                'msg': 'Please Enter correct share code'
             }
         return render(request, 'updateResidentAddress.html', context)
     elif request.method == 'POST':
