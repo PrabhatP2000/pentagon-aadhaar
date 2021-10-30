@@ -18,8 +18,7 @@
 <div class="container mt-5 mb-3">
   <div class="row justify-content-center">
     <div class="d-grid gap-2 col-md-6 col-xl-4 col-xll-4 col-lg-5 col-sm-7 col-12 text-center mb-4 mt-2">
-      <h3 style="color: rgb(7, 153, 7);">Your landlord has successfully granted your request.</h3>
-      <h4 style="color: rgb(7, 153, 7);">Click Below to proceed to update your address.</h4>
+      <h3>The Stauts of the Request has been show Below</h3>
     </div>
   </div>
 </div>
@@ -27,10 +26,34 @@
 <div class="container mb-2">
   <div class="row justify-content-center">
     <div class="d-grid gap-2 col-md-4 col-xl-4 col-xll-4 col-lg-4 col-sm-6 col-12 text-center mb-4 mt-2">
-      <button type="button" class="btn btn-warning centered btn-lg">
-        <a href="/enterpasscode" style="color: rgb(0, 0, 0); text-decoration: none;"><h4>Go Ahead</h4></a>
+      {%if resident.request_flag is True %}
 
-      </button>
+      <h1 class="text-info">You Request has been already sent to UIDAI for Further Verification</h1>
+
+      {%elif resident.request_flag is False %}
+
+      <h1 class="text-danger">You Request has been rejected due to major changes in the address</h1>
+
+      {%elif resident.consent_status is True and resident.request_flag is None  %}
+
+      <h1 class="text-success">Hello,{{resident.resident_aadhaar}} The Conset is accepted by the Landlord.</h1>
+      <h3 class="text-dark">You can proceed to update the address by clicking on the Link Below</h3>
+      <form action="{% url 'addressUpdate'%}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="resident_aadhaar" value={{resident.resident_aadhaar}}>
+        <input type="submit" class="btn btn-success centered btn-lg" value="Proceed">
+      </form>
+
+      {% elif resident.consent_status is False%}
+
+      <h3 class="text-danger">Hello,{{resident.resident_aadhaar}} The Conset is Rejected by the Landlord.</h3>
+
+      {% else %}
+
+      <h3 class="text-warning">Hello,{{resident.resident_aadhaar}} The Conset is Pending.Please Check back again later.
+      </h3>
+
+      {%endif%}
     </div>
   </div>
 </div>

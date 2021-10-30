@@ -29,86 +29,85 @@ def handleResident(request):
         resident_mobile_no = request.POST.get('resMobile')
         return render(request, 'landlord.html')
     else:
-        return HttpResponse('Error 404')
+        return render(request, '404.html')
 
 
 def handleLandlordCredentials(request):
-    print(request.POST)
     if request.method == 'POST':
-        landlord_aadhaar_no = request.POST.get('llAadhaar')
+        # landlord_aadhaar_no = request.POST.get('llAadhaar')
         llMobile = request.POST.get('llMobile')
-        if(landlord_aadhaar_no==resident_aadhaar_no):
-            return HttpResponse("Resident Aadhaar and Landlord Aadhaar Cant be Same")
+        if(llMobile==resident_mobile_no):
+            return HttpResponse("Please Enter Landlord's Mobile No. here")
         else:
-            landlord = Landlord(landlord_aadhaar=landlord_aadhaar_no, llMobile=llMobile)
+            landlord = Landlord(llMobile=llMobile)
             landlord.save()
-            resident = Resident(resident_aadhaar=resident_aadhaar_no,landlord_aadhaar=landlord, resMobile=resident_mobile_no)
+            print(resident_mobile_no,type(resident_mobile_no))
+            resident = Resident(resident_aadhaar=resident_aadhaar_no, llMobile=landlord, resMobile=resident_mobile_no)
             resident.save()
             msg=f"Your Resident with Aadhaar no. {resident.resident_aadhaar} has requested to Borrow your address.Click the below link to give the Consent or you can visit our site xyz.com.  Link https://localhost:8000/landlord"
             # smsapi.sendSms(msg,landlord.llMobile)
-            return HttpResponse('Success-Your Request has been Successfully Sent')
+        return render(request, 'success.html',{'data':'Success-Your Request has been Successfully Sent'})
     else:
-        return HttpResponse('Error 404')
+        return render(request, '404.html')
 
 def getLandlord(request):
     return render(request, 'landlord_login.html')
 
 def handleLandlordLogin(request):
     if request.method == 'POST':
-        landlord_aadhaar_no = request.POST['llAadhaar']
-        isPresent=Landlord.objects.filter(landlord_aadhaar=landlord_aadhaar_no).first()
+        llMobile = request.POST['llMobile']
+        print(llMobile)
+        llAadhaar = request.POST['llAadhaar']
+        isPresent=Landlord.objects.filter(llMobile=llMobile).first()
         if(isPresent is None):
             return HttpResponse("No One has requested to borrow your address")
         else:
-            residents=Resident.objects.filter(landlord_aadhaar=landlord_aadhaar_no)
-            return render(request, 'consent.html',{'data':residents,'landlord':landlord_aadhaar_no})
+            residents=Resident.objects.filter(llMobile=llMobile)
+            return render(request, 'consent.html',{'data':residents,'llMobile': llMobile, 'llAadhaar': llAadhaar})
     else:
-        return HttpResponse('Error 404')
+        return render(request, '404.html')
 
 def rejectedRequest(request):
     if request.method == 'POST':
         resident_aadhaar_no = request.POST['resident_aadhaar']
-        landlord_aadhaar_no = request.POST['landlord_aadhaar']
+        # landlord_aadhaar_no = request.POST['llMobile']
         #Consent Status Update
         residents=Resident.objects.filter(resident_aadhaar=resident_aadhaar_no).first()
         if(residents.consent_status is None):
             residents.consent_status=False
             residents.save()
-            return HttpResponse("Your Consent of Flase has been registered")
+            return render(request, 'success.html',{'data':"Your Consent of Flase has been registered"})
     else:
-        return HttpResponse("Error 404")
+        return render(request, '404.html')
 
 def acceptedRequest(request):
     # Offline EKYC LOGIC HERE
     if request.method == "POST":
         resident_aadhaar_no = request.POST.get('resident_aadhaar')
-        landlord_aadhaar_no = request.POST.get('landlord_aadhaar')
+        llMobile = request.POST.get('llMobile')
+        print(llMobile, 'shree')
+        llAadhaar = request.POST.get('llAadhaar')
         context = {
-            'llAadhaar': landlord_aadhaar_no,
-            'llMobile': '8329253081',
+            'llMobile': llMobile,
             'resAadhaar': resident_aadhaar_no,
+            'llAadhaar': llAadhaar
         }
         return render(request, 'ekyc.html', context)
     else:
-        return HttpResponse("Error 404")
+        return render(request, '404.html')
 
 def ekycSuccess(request):
-
     if request.method == 'POST':
         resident_aadhaar_no = request.POST['resAadhaar']
         share_code=request.POST['shareCode']
-        landlord_aadhaar_no = request.POST['llAadhaar']
         residents=Resident.objects.filter(resident_aadhaar=resident_aadhaar_no).first()
-        landlords=Landlord.objects.filter(landlord_aadhaar=landlord_aadhaar_no).first()
-        landlords.passcode=share_code
         residents.consent_status=True
         residents.save()
-        landlords.save()
-        msg=f"Your Landlord with Aadhaar no. {landlords.landlord_aadhaar} has successfully granted his consent for using his adress.Click the below link to Update your address or you can visit our site xyz.com.  Link https://localhost:8000/status"
+        msg=f"Your Landlord has successfully granted his consent for using his adress.Click the below link to Update your address or you can visit our site xyz.com.  Link https://localhost:8000/status"
         # smsapi.sendSms(msg,residents.resMobile)
-        return HttpResponse('Success')
+        return render(request, 'success.html',{'data':"Offline eKYC Successful"})
     else:
-        return HttpResponse('Error 404')
+        return render(request, '404.html')
 
 def status(request):
     return render(request, 'status_site.html')
@@ -120,7 +119,7 @@ def handleStatus(request):
         print(residents.consent_status)
         return render(request, 'status_check.html',{'resident':residents})
     else:
-        return HttpResponse("Error 404")
+        return render(request, '404.html')
 
 def updateAddress(request):
     print(request.POST)
@@ -145,7 +144,7 @@ def updateAddress(request):
         if validateLocation(r.country, r.state, lat, long):
             r.request_flag=True
             r.save()
-            return HttpResponse('Success')
+            return render(request, 'success.html',{'data':"Congratulations,Your Address has been updated successfully"})
         else:
             r.request_flag=False
             r.save()
@@ -154,11 +153,11 @@ def updateAddress(request):
         resAadhaar = request.POST.get('resident_aadhaar')
         shareCode = request.POST.get('shareCode')
         r = Resident.objects.filter(resident_aadhaar=int(resAadhaar)).first()
-        llAadhaar = r.landlord_aadhaar.landlord_aadhaar
-        print(llAadhaar)
-        l = Landlord.objects.filter(landlord_aadhaar=llAadhaar).first()
+        llMobile = r.llMobile.llMobile
+        print(llMobile)
+        l = Landlord.objects.filter(llMobile=llMobile).first()
         print(l.passcode)
-        if int(shareCode) == l.passcode:
+        if shareCode and int(shareCode) == l.passcode:
             flag = True
             context = {
                 'auth': flag,
@@ -169,7 +168,8 @@ def updateAddress(request):
             flag = False
             context = {
                 "auth": flag,
-                'resAadhaar':resAadhaar
+                'resAadhaar':resAadhaar,
+                'msg': 'Please Enter correct share code'
             }
         return render(request, 'updateResidentAddress.html', context)
     elif request.method == 'POST':
@@ -180,7 +180,7 @@ def updateAddress(request):
         }
         return render(request, 'updateResidentAddress.html', context)
     else:
-        return HttpResponse('error 404')
+        return render(request, '404.html')
 
 
 
@@ -191,11 +191,11 @@ def saveZip(request):
     filename = body['filename']
     filedata = body['filedata']
     shareCode = body['code']
-    llAadhaar = body['llAadhaar']
-    with open(f'main/ekyc/{filename}', "wb") as fh:
+    llMobile = body['llMobile']
+    with open(f'ps1/ekyc/{filename}', "wb") as fh:
         fh.write(base64.decodebytes(bytes(filedata, 'utf-8')))
 
-    archive = zipfile.ZipFile(f'main/ekyc/{filename}', 'r')
+    archive = zipfile.ZipFile(f'ps1/ekyc/{filename}', 'r')
     name = filename.split('.')[0]
     file = archive.open(f'{name}.xml', pwd=bytes(f'{shareCode}', 'utf-8'))
     xmldata = file.read()
@@ -216,7 +216,7 @@ def saveZip(request):
     subdist= poa.attrib['subdist']
     vtc= poa.attrib['vtc']
     print(state, street, dist, subdist)
-    x = Landlord.objects.filter(landlord_aadhaar=llAadhaar).first()
+    x = Landlord.objects.filter(llMobile=llMobile).first()
     x.careof = careof
     x.country = country
     x.dist = dist

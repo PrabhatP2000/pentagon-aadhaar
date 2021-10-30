@@ -164,7 +164,7 @@ function saveZip(){
     "filedata" : stepthreeresponse.eKycXML,
     "filename" : stepthreeresponse.fileName,
     "code" : shareCode.value,
-    "llAadhaar": llAadhaar.value
+    "llMobile": llMobile.value
   }
   console.log(data)
 
