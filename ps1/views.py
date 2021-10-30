@@ -33,6 +33,7 @@ def handleResident(request):
 
 
 def handleLandlordCredentials(request):
+    print(request.POST)
     if request.method == 'POST':
         landlord_aadhaar_no = request.POST.get('llAadhaar')
         llMobile = request.POST.get('llMobile')
