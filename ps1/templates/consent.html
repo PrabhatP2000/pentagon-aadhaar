@@ -3,16 +3,6 @@
 <!-- Title block -->
 {% block title %}Give the Consent{% endblock %}
 
-{% block css %}
-<style>
-  input[type=number]::-webkit-inner-spin-button,
-  input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-</style>
-{% endblock%}
-
 {% block content %}
 
 <!--For Landlord-->
@@ -51,8 +41,8 @@
                 </form>
                 <form action="{% url 'requestRejected'%}" method="post">
                   {% csrf_token %}
-                  <input type="hidden" name="resident_aadhaar" value="{{da}}"}>
-                  <input type="hidden" name="llMobile" value="{{llmobile}}"}>
+                  <input type="hidden" name="resident_aadhaar" value="{{da}}" }>
+                  <input type="hidden" name="llMobile" value="{{llmobile}}" }>
                   <input type="submit" class="btn btn-danger" value="Reject">
                 </form>
                 <!-- <button type="button" class="btn btn-success">Accept</button>
@@ -62,7 +52,7 @@
           </tr>
           {% endif %}
           {% endfor %}
-          
+
         </tbody>
       </table>
     </div>

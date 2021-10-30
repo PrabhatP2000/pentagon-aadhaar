@@ -1,17 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 <!-- Title block -->
-{% block title %}Welcome{% endblock %}
-
-{% block css %}
-<style>
-  input[type=number]::-webkit-inner-spin-button,
-  input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-</style>
-{% endblock%}
+{% block title %}Resident Address Update{% endblock %}
 
 {% block content %}
 
@@ -27,7 +17,7 @@
       <hr style="margin:0%">
       <form action="{% url 'addressUpdate' %}" method="post" class="row g-3 mt-2 mb-4 mx-auto">
         {% csrf_token %}
-      
+
         {% if not auth %}
         <div class="col-6">
           <label for="housenumber" class="form-label">Share Code</label>
