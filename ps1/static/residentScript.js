@@ -78,6 +78,8 @@ function stepTwo(){
         // shareCode.type = "text"
         userAadhaar.disabled = true
         resMobile.disabled = true
+        msgLabel.innerText = 'OTP sent...'
+        msgLabel.style.color = 'green'
       }
       else{
         msgLabel.innerText = "Invalid Captcha"
