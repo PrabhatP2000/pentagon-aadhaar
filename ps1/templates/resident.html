@@ -27,65 +27,67 @@
       </div>
       <hr style="margin:0%">
 
-        <div class="container justify-content-center">
+      <div class="container justify-content-center">
 
-          <form action="{% url 'handleResident' %}" method="post" id="authResidentForm">
-            {% csrf_token %}
-            <div class="mb-3">
-              <label for="userAadhaar" class="form-label" style="font-weight:500;">Aadhaar Number</label>
-              <div class="input-group input-group-lg mb-2">
-                <input type="number" class="form-control" name="resAadhaar" id="userAadhaar" placeholder="XXXX XXXX 4536"
-                  aria-describedby="aadharnumberhelp">
-              </div>
-              <label for="resMobile" class="form-label" style="font-weight:500;">Mobile Number</label>
-              <div class="input-group input-group-lg">
-                <input type="number" class="form-control" id="resMobile" placeholder="Enter Mobile Number"
-                  aria-label="Sizing example input" aria-describedby="mobilenumberhelp">
-              </div>   
-              <div id="aadharnumberhelp" class="form-text">We'll share OTP on registered mobile number</div>
-
-            </div>
-            <div class="mb-4">
-              <img name="imgCaptcha" src="" id="imgcaptcha" /><br />
-            </div>
-
+        <form action="{% url 'handleResident' %}" method="post" id="authResidentForm">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="userAadhaar" class="form-label" style="font-weight:500;">Aadhaar Number</label>
             <div class="input-group input-group-lg mb-2">
-              <input type="text" class="form-control" name="captcha" id="textCaptcha" placeholder="Enter valid captcha"
+              <input type="number" class="form-control" name="resAadhaar" id="userAadhaar" placeholder="XXXX XXXX 4536"
                 aria-describedby="aadharnumberhelp">
             </div>
-            
-            <div class="mb-4">
-              <input class="btn btn-success" type="button" id="reloadCaptcha" name="reloadCaptcha" value="Reload Captcha"></input>
-             
+            <label for="resMobile" class="form-label" style="font-weight:500;">Mobile Number</label>
+            <div class="input-group input-group-lg">
+              <input type="number" class="form-control" name="resMobile" id="resMobile"
+                placeholder="Enter Mobile Number" aria-label="Sizing example input" aria-describedby="mobilenumberhelp">
             </div>
-            <div class="mb-4">
-              <input class="btn btn-success" type="button" name="sendOTP" id="sendOTP" value="Send OTP"></input>
-              
+            <div id="aadharnumberhelp" class="form-text">We'll share OTP on registered mobile number</div>
+
+          </div>
+          <div class="mb-4">
+            <img name="imgCaptcha" src="" id="imgcaptcha" /><br />
+          </div>
+
+          <div class="input-group input-group-lg mb-2">
+            <input type="text" class="form-control" name="captcha" id="textCaptcha" placeholder="Enter valid captcha"
+              aria-describedby="aadharnumberhelp">
+          </div>
+
+          <div class="mb-4">
+            <input class="btn btn-success" type="button" id="reloadCaptcha" name="reloadCaptcha"
+              value="Reload Captcha"></input>
+
+          </div>
+          <div class="mb-4">
+            <input class="btn btn-success" type="button" name="sendOTP" id="sendOTP" value="Send OTP"></input>
+
+          </div>
+          <div class="mb-4">
+            <div class="input-group input-group-lg">
+              <input type="text" class="form-control" name="OTP" id="textOTP" placeholder="Enter OTP">
             </div>
-            <div class="mb-4">
-              <div class="input-group input-group-lg">
-                <input type="text" class="form-control" name="OTP" id="textOTP" placeholder="Enter OTP">
-              </div>
+          </div>
+          <div class="mb-4">
+            <div class="input-group input-group-lg">
+              <input type="hidden" name="shareCode" id="shareCode" placeholder="Enter Sharable Code"
+                class="form-control">
             </div>
-            <div class="mb-4">
-              <div class="input-group input-group-lg">
-                <input type="hidden" name="shareCode" id="shareCode" placeholder="Enter Sharable Code" class="form-control" >
-              </div>
+          </div>
+          <div class="mb-4">
+            <div class="input-group input-group-lg">
+              <input type="hidden" name="validateOTP" id="validateOTP" value="Validate OTP" class="form-control">
             </div>
-            <div class="mb-4">
-              <div class="input-group input-group-lg">
-                <input type="hidden" name="validateOTP" id="validateOTP" value="Validate OTP" class="form-control" >
-              </div>
-            </div>
-            <div class="mb-4">
-              <b style="margin-left: 1%; color: #2ea101; display:inline;" id="msgLabel"></b>
-            </div>
-            <hr style="color: cadetblue;">
-            <div class="d-grid gap-2 col-6 mx-auto mt-4  mb-3">
-              <input type="hidden" name="nextPage" id="nextPage" value="Next" class="btn btn-primary btn-lg"></input>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div class="mb-4">
+            <b style="margin-left: 1%; color: #2ea101; display:inline;" id="msgLabel"></b>
+          </div>
+          <hr style="color: cadetblue;">
+          <div class="d-grid gap-2 col-6 mx-auto mt-4  mb-3">
+            <input type="hidden" name="nextPage" id="nextPage" value="Next" class="btn btn-primary btn-lg"></input>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

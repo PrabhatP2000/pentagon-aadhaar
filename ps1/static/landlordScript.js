@@ -25,7 +25,7 @@ inputBox.addEventListener("keyup", function (e) {
   if (invalidChars.includes(e.key)) {
     e.preventDefault()
   }
-  if (this.value.length == 12){
+  if (this.value.length == 10){
     submitLlDetails.disabled = false
     submitLlDetails.type = 'submit'
   }
