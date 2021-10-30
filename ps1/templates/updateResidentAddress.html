@@ -27,6 +27,7 @@
       <hr style="margin:0%">
       <form action="{% url 'addressUpdate' %}" method="post" class="row g-3 mt-2 mb-4 mx-auto">
         {% csrf_token %}
+      
         {% if not auth %}
         <div class="col-6">
           <label for="housenumber" class="form-label">Share Code</label>
@@ -39,7 +40,10 @@
         <div class="d-grid gap-2 col-6 mx-auto mt-2  mb-3">
           <input type="submit" name="submitCode" value="Submit Code" class="btn btn-primary btn-lg">
         </div>
+        <label for="wrong" class="form-label" style="font-weight:500;">{{ msg }}</label>
+
         {% else %}
+        {% if l %}
         <input type="hidden" name="resident_aadhaar" value={{resAadhaar}}>
         <div class="col-md-6">
           <label for="careof" class="form-label">Careof</label>
@@ -123,6 +127,7 @@
           <input type="submit" name="updateAddress" id="updateAddress" value="Update Address"
             class="btn btn-primary btn-lg">
         </div>
+        {% endif %}
         {% endif %}
       </form>
     </div>
