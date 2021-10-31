@@ -22,7 +22,7 @@
         <form action="{% url 'handleLandLordLogin' %}" method="post">
           {% csrf_token %}
           <div class="mb-3">
-            <label for="llAadhaar" class="form-label" style="font-weight:500;">Aadhaar Number</label>
+            <label for="llAadhaar" class="form-label mt-2" style="font-weight:500;">Aadhaar Number</label>
             <div class="input-group input-group-lg mb-2">
               <input type="text" class="form-control" name="llAadhaar" id="llAadhaar" placeholder="XXXX XXXX 4536"
                 aria-describedby="aadharnumberhelp" maxlength=12>
