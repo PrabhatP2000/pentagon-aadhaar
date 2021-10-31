@@ -1,7 +1,12 @@
 
 let lat = document.getElementById('lat')
 let long = document.getElementById('long')
+let shareCode = document.getElementById('shareCode')
 
+shareCode.addEventListener('click', function() {
+  llAadhaar.disabled = false
+  llMobile.disabled = false
+})
 
 var options = {
   enableHighAccuracy: true,
