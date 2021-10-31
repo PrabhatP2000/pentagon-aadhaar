@@ -130,7 +130,10 @@ def updateAddress(request):
         r = Resident.objects.filter(resident_aadhaar=int(resAadhaar)).first()
         lat = float(request.POST.get('lat'))
         long = float(request.POST.get('long'))
-        if validateLocation(r.country, r.state, lat, long):
+        country = request.POST.get('country')
+        state = request.POST.get('state')
+        if validateLocation(country, state, lat, long):
+            print('True', 'validated')
             r.request_flag=True
             r.careof = request.POST.get('careof')
             r.country = request.POST.get('country')
@@ -147,6 +150,7 @@ def updateAddress(request):
             r.save()
             return render(request, 'success.html',{'data':"Congratulations,Your Address has been updated successfully"})
         else:
+            print('false', 'not validated')
             r.request_flag=False
             r.save()
             return render(request, 'unsuccess.html',{'data':"Invalid Address, Request Rejected"})
@@ -255,7 +259,12 @@ def validateLocation(country, state, lat, long):
     loc = json.loads(response.text)
     print(loc)
     address = loc['address']
+    print(country)
+    print(address['country'])
+    print(state)
+    print(address['state'])
     if country == address['country'] and state == address['state']:
+        print('returned true')
         return True
     return False
 
