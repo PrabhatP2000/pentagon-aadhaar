@@ -8,80 +8,85 @@
 <!--Form 1-->
 <div class="container mt-5">
   <div class="row justify-content-center">
-    <div class="col-lg-6 col-md-7 col-xl-5 col-xll-4 mb-5" style="background-color: rgba(250, 250, 250, 0.24); border: solid #98b6fb 3px; border-radius: 2%; 
+    <div class="col-lg-6 col-md-7 col-xl-5 col-xll-4 mb-5" style="background-color: rgba(250, 250, 250, 0.24); border: solid #98b6fb 3px; border-radius: 2%;
         box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.5)  ;">
       <div style="background-color: rgb(251, 251, 251);">
         <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="55" height="55"
           style="padding-bottom: 3%;">
-        <h3 style="display: inline-block; padding: 3%;">Address Updation</h3>
+        <h3 style="display: inline-block; padding: 3%;">Offline eKYC</h3>
 
       </div>
       <hr style="margin:0%">
 
-        <div class="container justify-content-center">
+      <div class="container justify-content-center">
 
-          <form action="{% url 'ekycSuccess' %}" method="post">
-            {% csrf_token %}
-            <div class="mb-3">
-              <label for="userAadhaar" class="form-label" style="font-weight:500;">Aadhaar Number</label>
-              <div class="input-group input-group-lg mb-2">
-                <input type="text" class="form-control" name="llAadhaar" id="llAadhaar" value="{{ llAadhaar }}" placeholder="XXXX XXXX 4536"
-                  aria-describedby="aadharnumberhelp">
-              </div>
-              <div class="mb-4">
-                <div class="input-group input-group-lg">
-                  <input type="hidden" name="resAadhaar" value="{{ resAadhaar }}" class="form-control" >
-                </div>
-              </div>
-              <label for="resMobile" class="form-label" style="font-weight:500;">Mobile Number</label>
-              <div class="input-group input-group-lg">
-                <input type="number" class="form-control" name="llMobile"  id="llMobile" value="{{ llMobile }}" placeholder="Enter Mobile Number"
-                  aria-label="Sizing example input" aria-describedby="mobilenumberhelp">
-              </div>   
-              <div id="aadharnumberhelp" class="form-text">We'll share OTP on registered mobile number</div>
-
-            </div>
-            <div class="mb-4">
-              <img name="imgCaptcha" src="" id="imgcaptcha" /><br />
-            </div>
-
+        <form action="{% url 'ekycSuccess' %}" method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="userAadhaar" class="form-label mt-2" style="font-weight:500;">Aadhaar Number</label>
             <div class="input-group input-group-lg mb-2">
-              <input type="text" class="form-control" name="captcha" id="textCaptcha" placeholder="Enter valid captcha"
-                aria-describedby="aadharnumberhelp">
+              <input type="text" class="form-control" name="llAadhaar" id="llAadhaar" value="{{ llAadhaar }}"
+                placeholder="XXXX XXXX 4536" aria-describedby="aadharnumberhelp" maxlength=12>
             </div>
-            
             <div class="mb-4">
-              <input class="btn btn-success" type="button" id="reloadCaptcha" name="reloadCaptcha" value="Reload Captcha"></input>
-             
+              <div class="input-group input-group-lg">
+                <input type="hidden" name="resAadhaar" value="{{ resAadhaar }}" class="form-control">
+              </div>
             </div>
+            <label for="resMobile" class="form-label" style="font-weight:500;">Mobile Number</label>
+            <div class="input-group input-group-lg">
+              <input type="number" class="form-control" name="llMobile" id="llMobile" value="{{ llMobile }}" maxlength=10
+                placeholder="Enter Mobile Number" aria-label="Sizing example input" aria-describedby="mobilenumberhelp">
+            </div>
+            <div id="aadharnumberhelp" class="form-text">We'll share OTP on registered mobile number</div>
+
+          </div>
+          <div class="mb-4">
+            <img name="imgCaptcha" src="" id="imgcaptcha" /><br />
+          </div>
+
+          <div class="input-group input-group-lg mb-2">
+            <input type="text" class="form-control" name="captcha" id="textCaptcha" placeholder="Enter valid captcha"
+              aria-describedby="aadharnumberhelp">
+          </div>
+
+          <div class="d-flex gap-3 mt-3">
             <div class="mb-4">
               <input class="btn btn-success" type="button" name="sendOTP" id="sendOTP" value="Send OTP"></input>
-              
             </div>
+
             <div class="mb-4">
-              <div class="input-group input-group-lg">
-                <input type="hidden" class="form-control" name="OTP" id="textOTP" placeholder="Enter OTP">
-              </div>
+              <input class="btn btn-success" type="button" id="reloadCaptcha" name="reloadCaptcha"
+                value="Reload Captcha"></input>
             </div>
-            <div class="mb-4">
-              <div class="input-group input-group-lg">
-                <input type="hidden" name="shareCode" id="shareCode" placeholder="Enter Sharable Code" class="form-control" >
-              </div>
+
+          </div>
+          <div class="mb-4">
+            <div class="input-group input-group-lg">
+              <input type="hidden" class="form-control" name="OTP" id="textOTP" placeholder="Enter OTP">
             </div>
-            <div class="mb-4">
-              <div class="input-group input-group-lg">
-                <input type="hidden" name="validateOTP" id="validateOTP" value="Validate OTP" class="btn btn-primary btn-lg" >
-              </div>
+          </div>
+          <div class="mb-4">
+            <div class="input-group input-group-lg">
+              <input type="hidden" name="shareCode" id="shareCode" placeholder="Enter Sharable Code"
+                class="form-control">
             </div>
-            <div class="mb-4">
-              <b style="margin-left: 1%; color: #2ea101; display:inline;" id="msgLabel"></b>
+          </div>
+          <div class="mb-4">
+            <div class="input-group input-group-lg">
+              <input type="hidden" name="validateOTP" id="validateOTP" value="Validate OTP"
+                class="btn btn-primary btn-lg">
             </div>
-            <hr style="color: cadetblue;">
-            <div class="d-grid gap-2 col-6 mx-auto mt-4  mb-3">
-              <input type="hidden" name="nextPage" id="nextPage" value="Next" class="btn btn-primary btn-lg"></input>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div class="mb-4">
+            <b style="margin-left: 1%; color: #2ea101; display:inline;" id="msgLabel"></b>
+          </div>
+          <hr style="color: cadetblue;">
+          <div class="d-grid gap-2 col-6 mx-auto mt-4  mb-3">
+            <input type="hidden" name="nextPage" id="nextPage" value="Next" class="btn btn-primary btn-lg"></input>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

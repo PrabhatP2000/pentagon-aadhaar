@@ -17,8 +17,7 @@ submitLlDetails.disabled = true
 //function
 
 inputBox.addEventListener("input", function () {
-  this.value = this.value.replace(/[AZ\az\+\-]/gi, "")
-
+  this.value = this.value.replace(/[^0-9]/g, "")
 })
 
 inputBox.addEventListener("keyup", function (e) {

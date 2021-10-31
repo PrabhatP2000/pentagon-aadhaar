@@ -19,8 +19,7 @@
       <table class="table table-dark table-hover">
         <thead>
           <tr>
-            <th scope="col">Sr. No</th>
-            <th scope="col">Aadhaar Card Number</th>
+            <th class="text-center" scope="col">Mobile Number</th>
             <th scope="col">Action</th>
 
           </tr>
@@ -29,8 +28,7 @@
           {% for da in data %}
           {%if da.consent_status is None%}
           <tr>
-            <th scope="row">1</th>
-            <td>{{da}}</td>
+            <td class="text-center">{{da.resMobile}}</td>
             <td>
               <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                 <form action="{% url 'requestAccepted'%}" method="post">
@@ -46,8 +44,6 @@
                   <input type="hidden" name="llMobile" value="{{llmobile}}" }>
                   <input type="submit" class="btn btn-danger" value="Reject">
                 </form>
-                <!-- <button type="button" class="btn btn-success">Accept</button>
-                <button type="button" class="btn btn-danger">Reject</button> -->
               </div>
             </td>
           </tr>

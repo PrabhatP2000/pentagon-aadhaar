@@ -46,7 +46,7 @@ def handleLandlordCredentials(request):
             print(resident_mobile_no,type(resident_mobile_no))
             resident = Resident(resident_aadhaar=resident_aadhaar_no, llMobile=landlord, resMobile=resident_mobile_no)
             resident.save()
-            msg=f"Your Resident with Aadhaar no. {resident.resident_aadhaar} has requested to Borrow your address.Click the below link to give the Consent or you can visit our site xyz.com.  Link https://localhost:8000/landlord"
+            msg=f"Your Resident with Mobile no. {resident.resMobile} has requested to Borrow your address.Click the below link to give the Consent or you can visit our site xyz.com.  Link https://localhost:8000/landlord"
             # smsapi.sendSms(msg,landlord.llMobile)
         return render(request, 'success.html',{'data':'Success-Your Request has been Successfully Sent'})
     else:
@@ -78,7 +78,7 @@ def rejectedRequest(request):
         if(residents.consent_status is None):
             residents.consent_status=False
             residents.save()
-            return render(request, 'success.html',{'data':"Your Consent of Flase has been registered"})
+            return render(request, 'success.html',{'data':"Your Consent of rejection has been registered"})
     else:
         return render(request, '404.html')
 
@@ -105,7 +105,7 @@ def ekycSuccess(request):
         residents=Resident.objects.filter(resident_aadhaar=resident_aadhaar_no).first()
         residents.consent_status=True
         residents.save()
-        msg=f"Your Landlord has successfully granted his consent for using his adress.Click the below link to Update your address or you can visit our site xyz.com.  Link https://localhost:8000/status"
+        msg=f"Your Landlord has successfully granted his consent for using his address.Your Passcode to update address is {share_code}.Click the below link to Update your addres Link https://localhost:8000/status"
         # smsapi.sendSms(msg,residents.resMobile)
         return render(request, 'success.html',{'data':"Offline eKYC Successful"})
     else:
@@ -124,13 +124,15 @@ def handleStatus(request):
 
 def updateAddress(request):
     print(request.POST)
-    # resAadhaar = '999996438044'
     if request.POST.get('updateAddress', None):
         resAadhaar = request.POST.get('resident_aadhaar')
         r = Resident.objects.filter(resident_aadhaar=int(resAadhaar)).first()
         lat = float(request.POST.get('lat'))
         long = float(request.POST.get('long'))
-        if validateLocation(r.country, r.state, lat, long):
+        country = request.POST.get('country')
+        state = request.POST.get('state')
+        if validateLocation(country, state, lat, long):
+            print('True', 'validated')
             r.request_flag=True
             r.careof = request.POST.get('careof')
             r.country = request.POST.get('country')
@@ -147,6 +149,7 @@ def updateAddress(request):
             r.save()
             return render(request, 'success.html',{'data':"Congratulations,Your Address has been updated successfully"})
         else:
+            print('false', 'not validated')
             r.request_flag=False
             r.save()
             return render(request, 'unsuccess.html',{'data':"Invalid Address, Request Rejected"})
@@ -253,8 +256,14 @@ def validateLocation(country, state, lat, long):
     link = f'https://nominatim.openstreetmap.org/reverse?format=json&lat={lat}&lon={long}&zoom=18&addressdetails=1'
     response = requests.get(link, headers=header)
     loc = json.loads(response.text)
+    print(loc)
     address = loc['address']
+    print(country)
+    print(address['country'])
+    print(state)
+    print(address['state'])
     if country == address['country'] and state == address['state']:
+        print('returned true')
         return True
     return False
 

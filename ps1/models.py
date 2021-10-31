@@ -24,6 +24,7 @@ class Landlord(models.Model):
 class Resident(models.Model):
     resident_aadhaar = models.IntegerField(primary_key=True)
     consent_status = models.BooleanField(null=True)
+    request_flag=models.BooleanField(null=True)
     llMobile = models.ForeignKey(Landlord,on_delete=models.CASCADE)
     resMobile = models.IntegerField(default=9999999999)
     careof = models.CharField(max_length=50,blank=True)

@@ -9,7 +9,7 @@
 <div class="container mt-5 mb-3">
   <div class="row justify-content-center">
     <div class="d-grid gap-2 col-md-6 col-xl-4 col-xll-4 col-lg-5 col-sm-7 col-12 text-center mb-4 mt-2">
-      <h3>The Stauts of the Request has been show Below</h3>
+      <h3>The Status of the Request has been show Below</h3>
     </div>
   </div>
 </div>
@@ -29,7 +29,7 @@
 
       {%elif resident.consent_status is True and resident.request_flag is None  %}
 
-      <h1 class="text-success">Hello,{{resident.resident_aadhaar}} The Conset is accepted by the Landlord.</h1>
+      <h1 class="text-success">Hello,{{resident.resident_aadhaar}} The Consent is accepted by the Landlord.</h1>
       <h3 class="text-dark">You can proceed to update the address by clicking on the Link Below</h3>
       <form action="{% url 'addressUpdate'%}" method="post">
         {% csrf_token %}
