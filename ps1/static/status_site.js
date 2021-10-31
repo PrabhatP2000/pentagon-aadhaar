@@ -31,7 +31,7 @@ nextPage.addEventListener('click', function() {
 userAadhaar.addEventListener("input", function () {
   this.value = this.value.replace(/[^0-9]/g, "")
 })
-resAadhaar.addEventListener("input", function () {
+resMobile.addEventListener("input", function () {
   this.value = this.value.replace(/[^0-9]/g, "")
 })
 

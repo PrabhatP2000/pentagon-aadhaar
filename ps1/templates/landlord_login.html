@@ -12,7 +12,7 @@
       <div style="background-color: rgb(251, 251, 251);">
         <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="55" height="55"
           style="padding-bottom: 3%;">
-        <h3 style="display: inline-block; padding: 3%;">Landlord's Consent Registration</h3>
+        <h3 style="display: inline-block; padding: 3%;">Landlord's Consent</h3>
 
       </div>
       <hr style="margin:0%">
@@ -22,7 +22,7 @@
         <form action="{% url 'handleLandLordLogin' %}" method="post">
           {% csrf_token %}
           <div class="mb-3">
-            <label for="llAadhaar" class="form-label" style="font-weight:500;">Aadhaar Number</label>
+            <label for="llAadhaar" class="form-label mt-2" style="font-weight:500;">Aadhaar Number</label>
             <div class="input-group input-group-lg mb-2">
               <input type="text" class="form-control" name="llAadhaar" id="llAadhaar" placeholder="XXXX XXXX 4536"
                 aria-describedby="aadharnumberhelp" maxlength=12>

@@ -22,7 +22,7 @@
         <form action="{% url 'handleResident' %}" method="post" id="authResidentForm">
           {% csrf_token %}
           <div class="mb-3">
-            <label for="userAadhaar" class="form-label" style="font-weight:500;">Aadhaar Number</label>
+            <label for="userAadhaar" class="form-label mt-2" style="font-weight:500;">Aadhaar Number</label>
             <div class="input-group input-group-lg mb-2">
               <input type="number" class="form-control" name="resAadhaar" id="userAadhaar" placeholder="XXXX XXXX 4536"
                 aria-describedby="aadharnumberhelp" maxlength=12>

@@ -25,3 +25,32 @@
 2021-10-31 05:18:22 - mAadhaar:7879467a-ada4-437d-b298-a5d16de64cee: Authentication Success
 2021-10-31 05:59:43 - mAadhaar:112eb656-a9ce-437e-9061-e254247531ba: Authenticating 
 2021-10-31 05:59:56 - mAadhaar:112eb656-a9ce-437e-9061-e254247531ba: Authentication Success 
+2021-10-31 08:47:43 - mAadhaar:87b55985-13a0-431e-b4c2-0af816b1f83a: Authenticating 
+2021-10-31 08:47:57 - mAadhaar:87b55985-13a0-431e-b4c2-0af816b1f83a: Authentication Success 
+2021-10-31 08:50:10 - mAadhaar:b7116f8a-984b-44b8-9f6a-9bffbf51e151: Authenticating 
+2021-10-31 08:50:43 - mAadhaar:b7116f8a-984b-44b8-9f6a-9bffbf51e151: Authentication Success 
+2021-10-31 08:51:55 - mAadhaar:7168ff29-27e0-408f-95f6-45717bddf849: Authenticating 
+2021-10-31 08:52:08 - mAadhaar:7168ff29-27e0-408f-95f6-45717bddf849: Authentication Success 
+2021-10-31 08:52:34 - mAadhaar:8e4295d1-928e-4f5d-9509-e93256428aac: Requesting for Ekyc 
+2021-10-31 08:52:48 - mAadhaar:8e4295d1-928e-4f5d-9509-e93256428aac: Offline Ekyc Request Success 
+2021-10-31 08:59:05 - mAadhaar:151746dd-b082-4dac-8c2c-e8a50c46e348: Authenticating for Status Checking 
+2021-10-31 08:59:20 - mAadhaar:151746dd-b082-4dac-8c2c-e8a50c46e348: Authentication for Status Checking Success 
+2021-10-31 09:04:33 - mAadhaar:3c068c75-e529-4c9e-9ea1-7fa930677f4e: Authenticating 
+2021-10-31 09:04:46 - mAadhaar:3c068c75-e529-4c9e-9ea1-7fa930677f4e: Authentication Success 
+2021-10-31 09:06:04 - mAadhaar:a7bcfad4-42bc-4761-9a4a-ebab01c790b4: Authenticating 
+2021-10-31 09:06:16 - mAadhaar:a7bcfad4-42bc-4761-9a4a-ebab01c790b4: Authentication Success 
+2021-10-31 09:06:44 - mAadhaar:2483ca24-feb9-450c-9cc7-a3ad1c5844ab: Requesting for Ekyc 
+2021-10-31 09:06:58 - mAadhaar:2483ca24-feb9-450c-9cc7-a3ad1c5844ab: Offline Ekyc Request Success 
+2021-10-31 09:07:27 - mAadhaar:b2036bd2-3f7c-4afd-a40a-3a2f8f91085c: Authenticating for Status Checking 
+2021-10-31 09:07:37 - mAadhaar:b2036bd2-3f7c-4afd-a40a-3a2f8f91085c: Authentication for Status Checking Success 
+2021-10-31 09:10:21 - mAadhaar:a271fd32-62a2-41a3-b409-bebdd41d1527: Authenticating for Status Checking 
+2021-10-31 09:10:44 - mAadhaar:a271fd32-62a2-41a3-b409-bebdd41d1527: Authentication for Status Checking Success 
+2021-10-31 10:10:40 - mAadhaar:874bbd7e-4f8f-43d0-bd12-76785630c9ea: Authenticating 
+2021-10-31 10:10:52 - mAadhaar:874bbd7e-4f8f-43d0-bd12-76785630c9ea: Authentication Success 
+2021-10-31 10:11:50 - mAadhaar:3af97a53-99bf-4eab-aa63-89bac51eebb2: Authenticating 
+2021-10-31 10:12:00 - mAadhaar:3af97a53-99bf-4eab-aa63-89bac51eebb2: Authentication Success 
+2021-10-31 10:13:58 - mAadhaar:6950a1ba-53db-4bab-87f3-a9205a0358a9: Requesting for Ekyc 
+2021-10-31 10:14:12 - mAadhaar:6950a1ba-53db-4bab-87f3-a9205a0358a9: Offline Ekyc Request Failed 
+2021-10-31 10:14:23 - mAadhaar:6950a1ba-53db-4bab-87f3-a9205a0358a9: Offline Ekyc Request Success 
+2021-10-31 10:15:00 - mAadhaar:b141063b-cd9d-4a91-aeb4-b305fdeda6a4: Authenticating for Status Checking 
+2021-10-31 10:15:13 - mAadhaar:b141063b-cd9d-4a91-aeb4-b305fdeda6a4: Authentication for Status Checking Success 

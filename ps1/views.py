@@ -47,7 +47,7 @@ def handleLandlordCredentials(request):
             resident = Resident(resident_aadhaar=resident_aadhaar_no, llMobile=landlord, resMobile=resident_mobile_no)
             resident.save()
             msg=f"Your Resident with Mobile no. {resident.resMobile} has requested to Borrow your address.Click the below link to give the Consent or you can visit our site xyz.com.  Link https://localhost:8000/landlord"
-            # smsapi.sendSms(msg,landlord.llMobile)
+            smsapi.sendSms(msg,landlord.llMobile)
         return render(request, 'success.html',{'data':'Success-Your Request has been Successfully Sent'})
     else:
         return render(request, '404.html')
@@ -106,7 +106,7 @@ def ekycSuccess(request):
         residents.consent_status=True
         residents.save()
         msg=f"Your Landlord has successfully granted his consent for using his address.Your Passcode to update address is {share_code}.Click the below link to Update your addres Link https://localhost:8000/status"
-        # smsapi.sendSms(msg,residents.resMobile)
+        smsapi.sendSms(msg,residents.resMobile)
         return render(request, 'success.html',{'data':"Offline eKYC Successful"})
     else:
         return render(request, '404.html')
@@ -147,7 +147,7 @@ def updateAddress(request):
             r.subdist= request.POST.get('subdist')
             r.vtc= request.POST.get('vtc')
             r.save()
-            return render(request, 'success.html',{'data':"Congratulations,Your Address has been updated successfully"})
+            return render(request, 'success.html',{'data':"Congratulations, Your Address has been sent to UIDAI for further verification"})
         else:
             print('false', 'not validated')
             r.request_flag=False
