@@ -10,7 +10,7 @@ from xml.dom import minidom
 import xml.etree.ElementTree as et
 from lxml import etree
 import datetime
-
+import os
 # Create your views here.
 
 
@@ -242,6 +242,8 @@ def saveZip(request):
     x.vtc = vtc
     x.passcode = int(shareCode)
     x.save()
+    if os.path.exists(f'ps1/ekyc/{filename}'):
+        os.remove(f'ps1/ekyc/{filename}')
     return HttpResponse(json.dumps({'status': 'success'}))
 
 
@@ -259,7 +261,6 @@ def validateLocation(country, state, lat, long):
 
 # for AJAX
 def getapi(request, apiLink):
-
     ct = request.content_type
 
     header = {

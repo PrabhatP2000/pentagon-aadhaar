@@ -78,7 +78,7 @@ function stepTwo(){
         // shareCode.type = "text"
         llAadhaar.disabled = true
         llMobile.disabled = true
-        maintainLogs()
+        maintainLogs("Authenticating")
       }
       else{
         msgLabel.innerText = "Invalid Captcha"
@@ -116,9 +116,11 @@ function stepThree(){
         nextPage.type = "submit"
         msgLabel.innerText = "OTP validated Successfully, Click Next to Continue"
         msgLabel.style.color = "green"
+        maintainLogs("Authentication Success")
       }
       else{
         msgLabel.innerText = "Invalid OTP"
+        maintainLogs("Authentication Failed")
       }
     }
   }
@@ -139,7 +141,7 @@ function stepThree(){
 
 stepOne()
 
-function maintainLogs(){
+function maintainLogs(message){
 
   let xhr = new XMLHttpRequest()
 
@@ -156,7 +158,7 @@ function maintainLogs(){
 
   data = {
     "transactionId" : steptworesponse.txnId ,
-    "message" : "Authenticating Landlord"
+    "message" : message
   }
   console.log(data)
 

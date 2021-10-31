@@ -83,7 +83,7 @@ function stepTwo(){
         shareCode.type = "text"
         llAadhaar.disabled = true
         llMobile.disabled = true
-        maintainLogs()
+        maintainLogs("Requesting for Ekyc")
       }
       else{
         msgLabel.innerText = "Invalid Captcha"
@@ -122,9 +122,11 @@ function stepThree(){
         msgLabel.innerText = "OTP validated Successfully, Click Next to Continue"
         msgLabel.style.color = "green"
         saveZip()
+        maintainLogs("Offline Ekyc Request Success")
       }
       else{
         msgLabel.innerText = "Invalid OTP"
+        maintainLogs("Offline Ekyc Request Failed")
       }
     }
   }
@@ -146,7 +148,7 @@ function stepThree(){
 
 stepOne()
 
-function maintainLogs(){
+function maintainLogs(message){
 
   let xhr = new XMLHttpRequest()
 
@@ -163,7 +165,7 @@ function maintainLogs(){
 
   data = {
     "transactionId" : steptworesponse.txnId ,
-    "message" : "Requesting for E-Kyc"
+    "message" : message
   }
   console.log(data)
 
