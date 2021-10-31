@@ -118,7 +118,6 @@ def handleStatus(request):
     if request.method == 'POST':
         resident_aadhaar_no = request.POST['resAadhaar']
         residents=Resident.objects.filter(resident_aadhaar=resident_aadhaar_no).first()
-        print(residents.consent_status)
         return render(request, 'status_check.html',{'resident':residents})
     else:
         return render(request, '404.html')
@@ -129,22 +128,22 @@ def updateAddress(request):
     if request.POST.get('updateAddress', None):
         resAadhaar = request.POST.get('resident_aadhaar')
         r = Resident.objects.filter(resident_aadhaar=int(resAadhaar)).first()
-        r.careof = request.POST.get('careof')
-        r.country = request.POST.get('country')
-        r.dist = request.POST.get('dist')
-        r.house = request.POST.get('house')
-        r.landmark = request.POST.get('landmark')
-        r.loc= request.POST.get('loc')
-        r.pc = request.POST.get('pc')
-        r.po = request.POST.get('po')
-        r.state = request.POST.get('state')
-        r.street = request.POST.get('street')
-        r.subdist= request.POST.get('subdist')
-        r.vtc= request.POST.get('vtc')
         lat = float(request.POST.get('lat'))
         long = float(request.POST.get('long'))
         if validateLocation(r.country, r.state, lat, long):
             r.request_flag=True
+            r.careof = request.POST.get('careof')
+            r.country = request.POST.get('country')
+            r.dist = request.POST.get('dist')
+            r.house = request.POST.get('house')
+            r.landmark = request.POST.get('landmark')
+            r.loc= request.POST.get('loc')
+            r.pc = request.POST.get('pc')
+            r.po = request.POST.get('po')
+            r.state = request.POST.get('state')
+            r.street = request.POST.get('street')
+            r.subdist= request.POST.get('subdist')
+            r.vtc= request.POST.get('vtc')
             r.save()
             return render(request, 'success.html',{'data':"Congratulations,Your Address has been updated successfully"})
         else:
