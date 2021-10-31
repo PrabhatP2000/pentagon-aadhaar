@@ -28,6 +28,12 @@ nextPage.addEventListener('click', function() {
   llMobile.disabled = false
 })
 
+llAadhaar.addEventListener("input", function () {
+  this.value = this.value.replace(/[^0-9]/g, "")
+})
+llMobile.addEventListener("input", function () {
+  this.value = this.value.replace(/[^0-9]/g, "")
+})
 //Function
 function stepOne(){
   msgLabel.innerText = ""

@@ -7,7 +7,7 @@
 <!--Form 1-->
 <div class="container mt-5">
   <div class="row justify-content-center">
-    <div class="col-lg-6 col-md-7 col-xl-5 col-xll-4 mb-5" style="background-color: rgba(250, 250, 250, 0.24); border: solid #98b6fb 3px; border-radius: 2%; 
+    <div class="col-lg-6 col-md-7 col-xl-5 col-xll-4 mb-5" style="background-color: rgba(250, 250, 250, 0.24); border: solid #98b6fb 3px; border-radius: 2%;
         box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.5)  ;">
       <div style="background-color: rgb(251, 251, 251);">
         <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="55" height="55"
@@ -25,12 +25,12 @@
             <label for="llAadhaar" class="form-label" style="font-weight:500;">Aadhaar Number</label>
             <div class="input-group input-group-lg mb-2">
               <input type="text" class="form-control" name="llAadhaar" id="llAadhaar" placeholder="XXXX XXXX 4536"
-                aria-describedby="aadharnumberhelp">
+                aria-describedby="aadharnumberhelp" maxlength=12>
             </div>
             <label for="llMobile" class="form-label" style="font-weight:500;">Mobile Number</label>
             <div class="input-group input-group-lg">
               <input type="text" class="form-control" name="llMobile" id="llMobile" placeholder="Enter Mobile Number"
-                aria-label="Sizing example input" aria-describedby="mobilenumberhelp">
+                aria-label="Sizing example input" aria-describedby="mobilenumberhelp" maxlength="10">
             </div>
             <div id="aadharnumberhelp" class="form-text">We'll share OTP on registered mobile number</div>
 
