@@ -78,7 +78,7 @@ def rejectedRequest(request):
         if(residents.consent_status is None):
             residents.consent_status=False
             residents.save()
-            return render(request, 'success.html',{'data':"Your Consent of Flase has been registered"})
+            return render(request, 'success.html',{'data':"Your Consent of rejection has been registered"})
     else:
         return render(request, '404.html')
 
