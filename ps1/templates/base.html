@@ -24,6 +24,7 @@
       margin: 0;
     }
   </style>
+
   {% endblock%}
 
   <!-- JS Block -->
@@ -49,31 +50,28 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-0 mb-lg-0">
-            <li class="p-1 pl-2 nav-item dropdown">
-              <a class="nav-link" href="https://uidai.gov.in/" id="navbarDropdown" target="_blank" role="button"
-                aria-expanded="false" style="color: aliceblue;">
-                <h4 style="color: white;">About UIDAI</h4>
-              </a>
-
-            </li>
             <li class="p-1 pl-2 nav-item">
-              <a class="nav-link active" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#demo1"
-                style="color: aliceblue;">
-                <h4 style="color: white;"> How to Update Address?</h4>
+              <a class="nav-link" href="/resident" style="color: aliceblue;">
+                <h4 style="color: white;">Address Update</h4>
               </a>
             </li>
 
-
             <li class="p-1 pl-2 nav-item">
-              <a class="nav-link" href="/check_status_login" style="color: aliceblue;">
+              <a class="nav-link" href="/landlord" style="color: aliceblue;">
+                <h4 style="color: white;">Landlord Consent Registration</h4>
+              </a>
+            </li>
+            <li class="p-1 pl-2 nav-item">
+              <a class="nav-link" href="/status" style="color: aliceblue;">
                 <h4 style="color: white;">Check Status</h4>
               </a>
             </li>
             <li class="p-1 pl-2 nav-item">
-              <a class="nav-link" href="/residentlogin" style="color: aliceblue;">
-                <h4 style="color: white; ">Update Address</h4>
+              <a class="nav-link" href="/admin" target="_blank" style="color: aliceblue;">
+                <h4 style="color: white;">Admin Panel</h4>
               </a>
             </li>
+
 
           </ul>
 
@@ -88,175 +86,7 @@
   <!--Body-->
 
 
-  <!--Demo 1-->
 
-  <div class="modal fade" id="demo1" tabindex="-1" role="dialog" data-bs-backdrop="static"
-    aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
-    <div class="modal-dialog  modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <a class="navbar-brand" href="#">
-            <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="55" height="55">
-          </a>
-          <h3 class="text-center mx-1">Demo : Address Updation</h3>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </button>
-        </div>
-        <div class="modal-body px-5 pt-2 pb-1 p-md-5">
-
-          <p style="font-weight:500;">Fill the follwing details : </p>
-          <form action="" method="post" class="signup-form">
-
-            <div class="form-group mb-4">
-              <input type="number" class="form-control" style="padding: 2%;" name="aadharnumber" required
-                placeholder="Enter Aadhaar Number" disabled>
-            </div>
-            <div class="form-group mb-4">
-              <input type="number" class="form-control" style="padding: 2%;" name="aadharnumber" required
-                placeholder="Enter Mobile Number" disabled>
-            </div>
-            <div class="form-group mb-4">
-              <input type="number" name="otp" style="padding: 2%;" required class="form-control" placeholder="Enter OTP"
-                disabled>
-            </div>
-            <hr style="opacity:0.1 ">
-            <div class="form-group mb-3">
-              <button type="submit" class="form-control btn btn-primary btn-lg rounded submit px-3"
-                disabled>Submit</button>
-            </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-warning" data-bs-target="#demo2" data-bs-toggle="modal"
-                data-bs-dismiss="modal">Next</button>
-            </div>
-
-          </form>
-
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--Demo1 Model End-->
-
-  <!--Demo2 Model-->
-  <div class="modal fade" id="demo2" tabindex="-1" role="dialog" data-bs-backdrop="static"
-    aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
-    <div class="modal-dialog  modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <a class="navbar-brand" href="#">
-            <img src="{%static 'icons/landlordprofile2.png'%}" alt="" width="55" height="55">
-          </a>
-          <h3 class="text-center mx-1">Demo : Landlord's Data</h3>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </button>
-        </div>
-        <div class="modal-body px-5 pt-2 pb-1 p-md-5">
-
-          <p style="font-weight: 500;">Enter the landlord's Data. : </p>
-          <form action="" method="post" class="signup-form">
-
-            <div class="form-group mb-4">
-              <input type="number" class="form-control" style="padding: 2%;" name="aadharnumber" required
-                placeholder="Enter Aadhaar Number" disabled>
-            </div>
-            <div class="form-group mb-4">
-              <input type="number" class="form-control" style="padding: 2%;" name="mobilenumber" required
-                placeholder="Enter Mobile Number" disabled>
-            </div>
-
-            <hr style="opacity:0.1 ">
-            <div class="form-group mb-3">
-              <button type="submit" class="form-control btn btn-primary btn-lg rounded submit px-3"
-                disabled>Submit</button>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-warning" data-bs-target="#demo1" data-bs-toggle="modal"
-                data-bs-dismiss="modal">Go Back</button>
-
-              <button type="button" class="btn btn-warning" data-bs-target="#demo3" data-bs-toggle="modal"
-                data-bs-dismiss="modal">Next</button>
-            </div>
-
-          </form>
-
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--Demo2 Model End-->
-
-  <!--Demo3 Model-->
-
-  <div class="modal fade" id="demo3" tabindex="-1" role="dialog" data-bs-backdrop="static"
-  aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
-  <div class="modal-dialog  modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <a class="navbar-brand" href="#">
-          <img src="{%static 'images/passcodeicon.png'%}" alt="" width="55" height="55">
-        </a>
-        <h3 class="text-center mx-1">Demo : Passcode</h3>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </button>
-      </div>
-      <div class="modal-body px-5 pt-2 pb-1 p-md-5">
-
-        <p>Enter the Passcode ( Already shared via <b>SMS</b> ) : </p>
-        <form action="" method="post" class="signup-form">
-
-          <div class="form-group mb-4">
-            <input type="password" class="form-control" style="padding: 2%;" name="aadharnumber" required
-              placeholder="***********" disabled>
-          </div>
-         
-          <hr style="opacity:0.1 ">
-          <div class="form-group mb-3">
-            <button type="submit" class="form-control btn btn-primary btn-lg rounded submit px-3"
-              disabled>Submit</button>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-warning" data-bs-target="#demo2" data-bs-toggle="modal"
-              data-bs-dismiss="modal">Go Back</button>
-
-            <button type="button" class="btn btn-warning" data-bs-target="#demo4" data-bs-toggle="modal"
-              data-bs-dismiss="modal">Next</button>
-          </div>
-
-        </form>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-  <!--Demo4 Model End-->
-  <!--Demo4 Model -->
-
-  <div class="modal fade" id="demo4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-    data-bs-backdrop="static">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <a class="navbar-brand" href="#">
-            <img src="{%static 'icons/congrats.png'%}" alt="" width="55" height="55">
-          </a>
-          <h4 class="modal-title" id="exampleModalLabel">Congratulations</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>
-            <h4>Your request has been successfully sent to the landlord.</h4>
-          </p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Done</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<!--Demo4 Model End-->
   <!--Body-->
   <!-- Footer -->
   <div class="container-fluid mt-5 mx-0 mb-0" style="background-color: #0d6efd;">

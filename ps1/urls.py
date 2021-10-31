@@ -3,7 +3,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.index),
+    path('', views.index,name='index'),
     path('resident/', views.getResident,name='resident'),
     path('handle_resident', views.handleResident, name="handleResident"),
     path('handle_landlord',views.handleLandlordCredentials,name='handleLandLord'),
@@ -17,4 +17,5 @@ urlpatterns = [
     path('address_update',views.updateAddress,name="addressUpdate"),
     path('api/<path:apiLink>', views.getapi),  # for AJAX purpose
     path('saveZip/', views.saveZip),
+    path('logs/', views.maintainLogs),
 ]

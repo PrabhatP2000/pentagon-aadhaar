@@ -9,8 +9,10 @@ from .files import smsapi
 from xml.dom import minidom
 import xml.etree.ElementTree as et
 from lxml import etree
-
+import datetime
+import os
 # Create your views here.
+
 
 resident_aadhaar_no=""
 resident_mobile_no=""
@@ -34,10 +36,10 @@ def handleResident(request):
 
 def handleLandlordCredentials(request):
     if request.method == 'POST':
-        # landlord_aadhaar_no = request.POST.get('llAadhaar')
+        landlord_aadhaar_no = request.POST.get('llAadhaar')
         llMobile = request.POST.get('llMobile')
         if(llMobile==resident_mobile_no):
-            return HttpResponse("Please Enter Landlord's Mobile No. here")
+            return render(request, 'unsuccess.html',{'data':"The Resident Mobile Number can't be same as Landlord's Mobile Number"})
         else:
             landlord = Landlord(llMobile=llMobile)
             landlord.save()
@@ -60,7 +62,7 @@ def handleLandlordLogin(request):
         llAadhaar = request.POST['llAadhaar']
         isPresent=Landlord.objects.filter(llMobile=llMobile).first()
         if(isPresent is None):
-            return HttpResponse("No One has requested to borrow your address")
+            return render(request, 'unsuccess.html',{'data':"No One has requested to borrow your address"})
         else:
             residents=Resident.objects.filter(llMobile=llMobile)
             return render(request, 'consent.html',{'data':residents,'llMobile': llMobile, 'llAadhaar': llAadhaar})
@@ -70,7 +72,7 @@ def handleLandlordLogin(request):
 def rejectedRequest(request):
     if request.method == 'POST':
         resident_aadhaar_no = request.POST['resident_aadhaar']
-        # landlord_aadhaar_no = request.POST['llMobile']
+        landlord_aadhaar_no = request.POST['llMobile']
         #Consent Status Update
         residents=Resident.objects.filter(resident_aadhaar=resident_aadhaar_no).first()
         if(residents.consent_status is None):
@@ -116,7 +118,6 @@ def handleStatus(request):
     if request.method == 'POST':
         resident_aadhaar_no = request.POST['resAadhaar']
         residents=Resident.objects.filter(resident_aadhaar=resident_aadhaar_no).first()
-        print(residents.consent_status)
         return render(request, 'status_check.html',{'resident':residents})
     else:
         return render(request, '404.html')
@@ -127,28 +128,28 @@ def updateAddress(request):
     if request.POST.get('updateAddress', None):
         resAadhaar = request.POST.get('resident_aadhaar')
         r = Resident.objects.filter(resident_aadhaar=int(resAadhaar)).first()
-        r.careof = request.POST.get('careof')
-        r.country = request.POST.get('country')
-        r.dist = request.POST.get('dist')
-        r.house = request.POST.get('house')
-        r.landmark = request.POST.get('landmark')
-        r.loc= request.POST.get('loc')
-        r.pc = request.POST.get('pc')
-        r.po = request.POST.get('po')
-        r.state = request.POST.get('state')
-        r.street = request.POST.get('street')
-        r.subdist= request.POST.get('subdist')
-        r.vtc= request.POST.get('vtc')
         lat = float(request.POST.get('lat'))
         long = float(request.POST.get('long'))
         if validateLocation(r.country, r.state, lat, long):
             r.request_flag=True
+            r.careof = request.POST.get('careof')
+            r.country = request.POST.get('country')
+            r.dist = request.POST.get('dist')
+            r.house = request.POST.get('house')
+            r.landmark = request.POST.get('landmark')
+            r.loc= request.POST.get('loc')
+            r.pc = request.POST.get('pc')
+            r.po = request.POST.get('po')
+            r.state = request.POST.get('state')
+            r.street = request.POST.get('street')
+            r.subdist= request.POST.get('subdist')
+            r.vtc= request.POST.get('vtc')
             r.save()
             return render(request, 'success.html',{'data':"Congratulations,Your Address has been updated successfully"})
         else:
             r.request_flag=False
             r.save()
-            return HttpResponse('Invalid Address, Request Rejected')
+            return render(request, 'unsuccess.html',{'data':"Invalid Address, Request Rejected"})
     elif request.POST.get('submitCode', None):
         resAadhaar = request.POST.get('resident_aadhaar')
         shareCode = request.POST.get('shareCode')
@@ -183,7 +184,16 @@ def updateAddress(request):
         return render(request, '404.html')
 
 
-
+def maintainLogs(request):
+    body = json.loads(request.body)
+    transactionId = body['transactionId']
+    message = body['message']
+    file = open('ps1/logs/audit.log', 'a')
+    now = datetime.datetime.now()
+    now = str(now)[:-7]
+    file.write(f"{now} - {transactionId}: {message} \n")
+    file.close()
+    return HttpResponse(json.dumps({'status': 'success'}))
 
 def saveZip(request):
     body = json.loads(request.body)
@@ -231,6 +241,8 @@ def saveZip(request):
     x.vtc = vtc
     x.passcode = int(shareCode)
     x.save()
+    if os.path.exists(f'ps1/ekyc/{filename}'):
+        os.remove(f'ps1/ekyc/{filename}')
     return HttpResponse(json.dumps({'status': 'success'}))
 
 
@@ -248,7 +260,6 @@ def validateLocation(country, state, lat, long):
 
 # for AJAX
 def getapi(request, apiLink):
-
     ct = request.content_type
 
     header = {

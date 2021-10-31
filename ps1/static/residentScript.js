@@ -80,6 +80,7 @@ function stepTwo(){
         resMobile.disabled = true
         msgLabel.innerText = 'OTP sent...'
         msgLabel.style.color = 'green'
+        maintainLogs("Authenticating")
       }
       else{
         msgLabel.innerText = "Invalid Captcha"
@@ -117,9 +118,11 @@ function stepThree(){
         nextPage.type = "submit"
         msgLabel.innerText = "OTP validated Successfully, Click Next to Continue"
         msgLabel.style.color = "green"
+        maintainLogs("Authentication Success")
       }
       else{
         msgLabel.innerText = "Invalid OTP"
+        maintainLogs("Authentication Failed")
       }
     }
   }
@@ -129,7 +132,7 @@ function stepThree(){
     "mobile" : resMobile.value,
     "otp": textOTP.value,
     "otpTxnId": steptworesponse.txnId,
-    
+
   }
 
   console.log(data)
@@ -140,6 +143,31 @@ function stepThree(){
 
 stepOne()
 
+
+function maintainLogs(message){
+
+  let xhr = new XMLHttpRequest()
+
+  xhr.open('POST', '/logs/', true)
+
+  xhr.setRequestHeader('X-CSRFToken', getCookie("csrftoken"))
+  xhr.setRequestHeader("Content-Type", "application/json")
+
+  xhr.onload = function(){
+    if (this.status == 200){
+      console.log(this.response)
+    }
+  }
+
+  data = {
+    "transactionId" : steptworesponse.txnId ,
+    "message" : message
+  }
+  console.log(data)
+
+  xhr.send(JSON.stringify(data))
+
+}
 
 function getCookie(name) {
 let cookieValue = null;

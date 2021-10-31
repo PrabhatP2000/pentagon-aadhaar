@@ -3,28 +3,19 @@
 <!-- Title block -->
 {% block title %}Give the Consent{% endblock %}
 
-{% block css %}
-<style>
-  input[type=number]::-webkit-inner-spin-button,
-  input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-</style>
-{% endblock%}
-
 {% block content %}
 
 <!--For Landlord-->
 
 <div class="container mt-5">
   <div class="row justify-content-center">
-    <div class="col-lg-8 col-md-9 col-xl-8 col-xll-8 mb-5" style="background-color: rgba(3, 0, 0, 0.815); border: solid #BDBDBD 1px; 
+    <div class="col-lg-8 col-md-9 col-xl-8 col-xll-8 mb-5" style=" border: solid #BDBDBD 1px; 
         box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.5) ;">
-      <h1>
+      <h2>
         Hello,{{llAadhaar}} below residents have requested to borrow address from you.
-        Click on Accept Button the give the Consent.
-      </h1>
+
+      </h2>
+      <h3 class="text-success">Click on Accept Button to give the Consent.</h3>
       <table class="table table-dark table-hover">
         <thead>
           <tr>
@@ -51,8 +42,8 @@
                 </form>
                 <form action="{% url 'requestRejected'%}" method="post">
                   {% csrf_token %}
-                  <input type="hidden" name="resident_aadhaar" value="{{da}}"}>
-                  <input type="hidden" name="llMobile" value="{{llmobile}}"}>
+                  <input type="hidden" name="resident_aadhaar" value="{{da}}" }>
+                  <input type="hidden" name="llMobile" value="{{llmobile}}" }>
                   <input type="submit" class="btn btn-danger" value="Reject">
                 </form>
                 <!-- <button type="button" class="btn btn-success">Accept</button>
@@ -62,7 +53,7 @@
           </tr>
           {% endif %}
           {% endfor %}
-          
+
         </tbody>
       </table>
     </div>

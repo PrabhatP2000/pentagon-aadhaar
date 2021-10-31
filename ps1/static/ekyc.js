@@ -83,6 +83,7 @@ function stepTwo(){
         shareCode.type = "text"
         llAadhaar.disabled = true
         llMobile.disabled = true
+        maintainLogs("Requesting for Ekyc")
       }
       else{
         msgLabel.innerText = "Invalid Captcha"
@@ -121,20 +122,22 @@ function stepThree(){
         msgLabel.innerText = "OTP validated Successfully, Click Next to Continue"
         msgLabel.style.color = "green"
         saveZip()
+        maintainLogs("Offline Ekyc Request Success")
       }
       else{
         msgLabel.innerText = "Invalid OTP"
+        maintainLogs("Offline Ekyc Request Failed")
       }
     }
   }
 
   data = {
-    
+
     "txnNumber": steptworesponse.txnId,
     "otp": textOTP.value,
     "shareCode" : shareCode.value,
     "uid": llAadhaar.value,
-    
+
   }
 
   console.log(data)
@@ -144,6 +147,31 @@ function stepThree(){
 
 
 stepOne()
+
+function maintainLogs(message){
+
+  let xhr = new XMLHttpRequest()
+
+  xhr.open('POST', '/logs/', true)
+
+  xhr.setRequestHeader('X-CSRFToken', getCookie("csrftoken"))
+  xhr.setRequestHeader("Content-Type", "application/json")
+
+  xhr.onload = function(){
+    if (this.status == 200){
+      console.log(this.response)
+    }
+  }
+
+  data = {
+    "transactionId" : steptworesponse.txnId ,
+    "message" : message
+  }
+  console.log(data)
+
+  xhr.send(JSON.stringify(data))
+
+}
 
 function saveZip(){
 
