@@ -46,7 +46,7 @@ def handleLandlordCredentials(request):
             print(resident_mobile_no,type(resident_mobile_no))
             resident = Resident(resident_aadhaar=resident_aadhaar_no, llMobile=landlord, resMobile=resident_mobile_no)
             resident.save()
-            msg=f"Your Resident with Aadhaar no. {resident.resident_aadhaar} has requested to Borrow your address.Click the below link to give the Consent or you can visit our site xyz.com.  Link https://localhost:8000/landlord"
+            msg=f"Your Resident with Mobile no. {resident.resMobile} has requested to Borrow your address.Click the below link to give the Consent or you can visit our site xyz.com.  Link https://localhost:8000/landlord"
             # smsapi.sendSms(msg,landlord.llMobile)
         return render(request, 'success.html',{'data':'Success-Your Request has been Successfully Sent'})
     else:
@@ -105,7 +105,7 @@ def ekycSuccess(request):
         residents=Resident.objects.filter(resident_aadhaar=resident_aadhaar_no).first()
         residents.consent_status=True
         residents.save()
-        msg=f"Your Landlord has successfully granted his consent for using his adress.Click the below link to Update your address or you can visit our site xyz.com.  Link https://localhost:8000/status"
+        msg=f"Your Landlord has successfully granted his consent for using his address.Your Passcode to update address is {share_code}.Click the below link to Update your addres Link https://localhost:8000/status"
         # smsapi.sendSms(msg,residents.resMobile)
         return render(request, 'success.html',{'data':"Offline eKYC Successful"})
     else:
@@ -124,7 +124,6 @@ def handleStatus(request):
 
 def updateAddress(request):
     print(request.POST)
-    # resAadhaar = '999996438044'
     if request.POST.get('updateAddress', None):
         resAadhaar = request.POST.get('resident_aadhaar')
         r = Resident.objects.filter(resident_aadhaar=int(resAadhaar)).first()
