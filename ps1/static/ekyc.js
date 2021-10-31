@@ -83,6 +83,7 @@ function stepTwo(){
         shareCode.type = "text"
         llAadhaar.disabled = true
         llMobile.disabled = true
+        maintainLogs()
       }
       else{
         msgLabel.innerText = "Invalid Captcha"
@@ -129,12 +130,12 @@ function stepThree(){
   }
 
   data = {
-    
+
     "txnNumber": steptworesponse.txnId,
     "otp": textOTP.value,
     "shareCode" : shareCode.value,
     "uid": llAadhaar.value,
-    
+
   }
 
   console.log(data)
@@ -144,6 +145,31 @@ function stepThree(){
 
 
 stepOne()
+
+function maintainLogs(){
+
+  let xhr = new XMLHttpRequest()
+
+  xhr.open('POST', '/logs/', true)
+
+  xhr.setRequestHeader('X-CSRFToken', getCookie("csrftoken"))
+  xhr.setRequestHeader("Content-Type", "application/json")
+
+  xhr.onload = function(){
+    if (this.status == 200){
+      console.log(this.response)
+    }
+  }
+
+  data = {
+    "transactionId" : steptworesponse.txnId ,
+    "message" : "Requesting for E-Kyc"
+  }
+  console.log(data)
+
+  xhr.send(JSON.stringify(data))
+
+}
 
 function saveZip(){
 

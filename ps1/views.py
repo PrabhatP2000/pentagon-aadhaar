@@ -9,8 +9,10 @@ from .files import smsapi
 from xml.dom import minidom
 import xml.etree.ElementTree as et
 from lxml import etree
+import datetime
 
 # Create your views here.
+
 
 resident_aadhaar_no=""
 resident_mobile_no=""
@@ -183,7 +185,16 @@ def updateAddress(request):
         return render(request, '404.html')
 
 
-
+def maintainLogs(request):
+    body = json.loads(request.body)
+    transactionId = body['transactionId']
+    message = body['message']
+    file = open('ps1/logs/audit.log', 'a')
+    now = datetime.datetime.now()
+    now = str(now)[:-7]
+    file.write(f"{now} - {transactionId}: {message} \n")
+    file.close()
+    return HttpResponse(json.dumps({'status': 'success'}))
 
 def saveZip(request):
     body = json.loads(request.body)

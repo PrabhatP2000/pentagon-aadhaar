@@ -17,4 +17,5 @@ urlpatterns = [
     path('address_update',views.updateAddress,name="addressUpdate"),
     path('api/<path:apiLink>', views.getapi),  # for AJAX purpose
     path('saveZip/', views.saveZip),
+    path('logs/', views.maintainLogs),
 ]
