@@ -43,16 +43,19 @@
             <input type="text" class="form-control" name="captcha" id="textCaptcha" placeholder="Enter valid captcha"
               aria-describedby="aadharnumberhelp">
           </div>
+          <div class="d-flex gap-3 mt-3">
+            <div class="mb-4">
+              <input class="btn btn-success" type="button" name="sendOTP" id="sendOTP" value="Send OTP"></input>
+            </div>
 
-          <div class="mb-4">
-            <input class="btn btn-success" type="button" id="reloadCaptcha" name="reloadCaptcha"
-              value="Reload Captcha"></input>
+            <div class="mb-4">
+              <input class="btn btn-success" type="button" id="reloadCaptcha" name="reloadCaptcha"
+                value="Reload Captcha"></input>
+            </div>
 
           </div>
-          <div class="mb-4">
-            <input class="btn btn-success" type="button" name="sendOTP" id="sendOTP" value="Send OTP"></input>
 
-          </div>
+
           <div class="mb-4">
             <div class="input-group input-group-lg">
               <input type="hidden" class="form-control" name="OTP" id="textOTP" placeholder="Enter OTP">

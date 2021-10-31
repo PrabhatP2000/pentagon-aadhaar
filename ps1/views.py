@@ -253,6 +253,7 @@ def validateLocation(country, state, lat, long):
     link = f'https://nominatim.openstreetmap.org/reverse?format=json&lat={lat}&lon={long}&zoom=18&addressdetails=1'
     response = requests.get(link, headers=header)
     loc = json.loads(response.text)
+    print(loc)
     address = loc['address']
     if country == address['country'] and state == address['state']:
         return True

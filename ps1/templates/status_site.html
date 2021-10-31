@@ -13,7 +13,7 @@
       <div style="background-color: rgb(251, 251, 251);">
         <img src="{%static 'images/aadhaar_english_logo.svg'%}" alt="" width="55" height="55"
           style="padding-bottom: 3%;">
-        <h3 style="display: inline-block; padding: 3%;">Address Status Check</h3>
+        <h3 style="display: inline-block; padding: 3%;">Status Check</h3>
 
       </div>
       <hr style="margin:0%">
@@ -23,7 +23,7 @@
         <form action="{% url 'handleStatus' %}" method="post">
           {% csrf_token %}
           <div class="mb-3">
-            <label for="userAadhaar" class="form-label" style="font-weight:500;">Aadhaar Number</label>
+            <label for="userAadhaar" class="form-label mt-2" style="font-weight:500;">Aadhaar Number</label>
             <div class="input-group input-group-lg mb-2">
               <input type="number" class="form-control" name="resAadhaar" id="userAadhaar" placeholder="XXXX XXXX 4536"
                 aria-describedby="aadharnumberhelp">
@@ -45,13 +45,15 @@
               aria-describedby="aadharnumberhelp">
           </div>
 
-          <div class="mb-4">
-            <input class="btn btn-success" type="button" id="reloadCaptcha" name="reloadCaptcha"
-              value="Reload Captcha"></input>
+          <div class="d-flex gap-3 mt-3">
+            <div class="mb-4">
+              <input class="btn btn-success" type="button" name="sendOTP" id="sendOTP" value="Send OTP"></input>
+            </div>
 
-          </div>
-          <div class="mb-4">
-            <input class="btn btn-success" type="button" name="sendOTP" id="sendOTP" value="Send OTP"></input>
+            <div class="mb-4">
+              <input class="btn btn-success" type="button" id="reloadCaptcha" name="reloadCaptcha"
+                value="Reload Captcha"></input>
+            </div>
 
           </div>
           <div class="mb-4">

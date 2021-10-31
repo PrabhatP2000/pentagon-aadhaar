@@ -15,3 +15,7 @@
 2021-10-31 04:15:34 - mAadhaar:50e36545-8cf7-4846-aafc-0ba5e82b4af2: Offline Ekyc Request Failed 
 2021-10-31 04:15:43 - mAadhaar:50e36545-8cf7-4846-aafc-0ba5e82b4af2: Offline Ekyc Request Failed 
 2021-10-31 04:15:49 - mAadhaar:50e36545-8cf7-4846-aafc-0ba5e82b4af2: Offline Ekyc Request Failed 
+2021-10-31 04:43:31 - mAadhaar:21e60902-bf43-4ea9-8ce6-e24e8a0a16f7: Authenticating 
+2021-10-31 04:43:45 - mAadhaar:21e60902-bf43-4ea9-8ce6-e24e8a0a16f7: Authentication Success 
+2021-10-31 04:53:30 - mAadhaar:17051291-f7c4-4cc0-8012-5c2ef7b841a0: Requesting for Ekyc 
+2021-10-31 04:53:56 - mAadhaar:17051291-f7c4-4cc0-8012-5c2ef7b841a0: Offline Ekyc Request Success 
