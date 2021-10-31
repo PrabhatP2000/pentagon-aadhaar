@@ -20,14 +20,13 @@
 
         {% if not auth %}
         <div class="col-6">
-          <label for="housenumber" class="form-label">Share Code</label>
           <div class="input-group input-group-lg">
             <input type="text" class="form-control" name="shareCode" id="shareCode"
               placeholder="Enter ShareCode sent on SMS.">
           </div>
         </div>
         <input type="hidden" name="resident_aadhaar" value={{resAadhaar}}>
-        <div class="d-grid gap-2 col-6 mx-auto mt-2  mb-3">
+        <div class="d-grid gap-2 col-6 mx-auto">
           <input type="submit" name="submitCode" value="Submit Code" class="btn btn-primary btn-lg">
         </div>
         <label for="wrong" class="form-label" style="font-weight:500;">{{ msg }}</label>
