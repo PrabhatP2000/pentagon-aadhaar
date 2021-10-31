@@ -36,7 +36,7 @@ def handleResident(request):
 
 def handleLandlordCredentials(request):
     if request.method == 'POST':
-        # landlord_aadhaar_no = request.POST.get('llAadhaar')
+        landlord_aadhaar_no = request.POST.get('llAadhaar')
         llMobile = request.POST.get('llMobile')
         if(llMobile==resident_mobile_no):
             return render(request, 'unsuccess.html',{'data':"The Resident Mobile Number can't be same as Landlord's Mobile Number"})
@@ -72,7 +72,7 @@ def handleLandlordLogin(request):
 def rejectedRequest(request):
     if request.method == 'POST':
         resident_aadhaar_no = request.POST['resident_aadhaar']
-        # landlord_aadhaar_no = request.POST['llMobile']
+        landlord_aadhaar_no = request.POST['llMobile']
         #Consent Status Update
         residents=Resident.objects.filter(resident_aadhaar=resident_aadhaar_no).first()
         if(residents.consent_status is None):
